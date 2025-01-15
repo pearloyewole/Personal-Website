@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Newsreader', serif;
+
 }
 
 .App-logo {
@@ -12,16 +14,25 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.content {
+  margin-left: 15rem;
+  margin-right: 15rem;
+  padding: 0 2rem;
+}
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #8fbfa3;
+  min-height: 1vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 10px;
+  margin: 1rem 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .App-link {
@@ -35,4 +46,67 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.nav-menu a {
+  color: rgb(255, 255, 255);
+  font-family: "Sometype Mono", monospace;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.nav-menu a:hover {
+  color: #666;
+  text-decoration: underline;
+}
+h1, h3, p {
+  text-align: left;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.Intro {
+  padding-top: 30rem;
+  
+}
+
+
+h1 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4rem;
+  margin: 20px 0;
+  text-align: left;
+}
+
+p {
+  font-family: "Sometype Mono", monospace;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.2rem;
+
+}
+h3 {
+  font-weight: 200;
+  font-size: 1.5rem;
+  color: #5b8165;
+}
+
+.profile-image {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 22rem;
+  right: 25rem;
+  object-fit: cover;
+  box-shadow: 20px 0px 0px rgb(205, 205, 205);
 }
