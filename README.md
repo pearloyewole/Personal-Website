@@ -1,3 +1,5 @@
+***Still working on this project. Finishing front-end, and will begin back-end soon***
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
