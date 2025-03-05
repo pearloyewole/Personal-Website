@@ -1,4 +1,4 @@
-***Still working on this project. Finishing front-end, and will begin back-end soon***
+***Still working on this project!!***
 
 # Getting Started with Create React App
 
