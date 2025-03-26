@@ -1,0 +1,60 @@
+.experience-container {
+    padding: 2rem 4rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.experience-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    border-left: 3px solid #8fbfa3;
+    background-color: rgba(143, 191, 163, 0.1);
+}
+
+.company-name {
+    padding: 0 0 0 2rem;
+    text-align: left;
+    font-family: "Newsreader", serif;
+    font-size: 1.8rem;
+    color: #5b8165;
+    margin-bottom: 0.5rem;
+}
+
+.job-title {
+    font-family: "Sometype Mono", monospace;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.date-range {
+    font-family: "Sometype Mono", monospace;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.responsibilities {
+    font-family: "Sometype Mono", monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.responsibilities ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.responsibilities li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.responsibilities li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #8fbfa3;
+} 
