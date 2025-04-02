@@ -1,7 +1,10 @@
 .experience-container {
-    padding: 2rem 4rem;
-    margin: 2rem auto;
-    max-width: 1200px;
+    display: flex;
+    gap: 1 rem;
+    align-items: flex-start;
+    padding: 1rem;
+    max-width: 5000px;
+    margin-left: 2rem;
 }
 
 .experience-item {
@@ -12,33 +15,37 @@
 }
 
 .company-name {
-    padding: 0 0 0 10rem;
+    padding: 0;
     text-align: left;
     font-family: "Newsreader", serif;
     font-size: 1.8rem;
     color: #5b8165;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .job-title {
+    text-align: left;
     font-family: "Sometype Mono", monospace;
     font-size: 1.2rem;
     color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.date-range {
-    font-family: "Sometype Mono", monospace;
-    font-size: 1rem;
-    color: #666;
     margin-bottom: 1rem;
 }
 
+.date-range {
+    text-align: left;
+    font-family: "Sometype Mono", monospace;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
 .responsibilities {
+    text-align: left;
     font-family: "Sometype Mono", monospace;
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #444;
+    margin-top: 1rem;
 }
 
 .responsibilities ul {
@@ -57,4 +64,44 @@
     position: absolute;
     left: 0;
     color: #8fbfa3;
+}
+
+.experience-card {
+    flex: 0.8;
+    padding: 0;
+    margin: 0;
+    margin-left: 0;
+}
+
+.pdf-viewer {
+    flex: 1.5;
+    height: 60vh;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    position: sticky;
+    top: 20px;
+}
+
+.pdf-document {
+    max-width: 100%;
+    height: auto;
+}
+
+.pdf-page {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Make it responsive */
+@media screen and (max-width: 1024px) {
+    .experience-container {
+        flex-direction: column;
+    }
+    
+    .pdf-viewer {
+        width: 100%;
+        height: 600px;
+        position: static;
+    }
 } 
