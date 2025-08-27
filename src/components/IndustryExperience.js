@@ -37,7 +37,7 @@ function IndustryExperience() {
       company: "Jane Street Capital",
       title: "Software Engineering Fellow",
       date: "June 2025 - August 2025",
-      tools: ["OCaml", "Trading Systems", "ETC Trading", "Game AI", "Graph Algorithms", "Web Scraping"],
+      tools: ["OCaml", "ETC Trading", "Game AI", "Graph Algorithms", "Web Scraping"],
       description: "Selected to join a 8-week, in-person summer program with 11 other top fellows nationwide, focusing on developing with OCaml and collaborative engineering practices with full-time engineers. Developed an ETC trading bot capable of trading and converting bonds, ADRs, and ETFs given market information within a simulated exchange. Projects included implementing image manipulation, game AIs, graph traversals, web scraping, website development.",
       location: "New York, NY",
     }
@@ -100,7 +100,7 @@ function IndustryExperience() {
             color: '#666',
             mb: 2
           }}>
-            Data Visualization • Software Engineering • Trading Systems • HCI
+            Data Visualization • Software Engineering • HCI
           </Typography>
           
           {/* Stats section */}
