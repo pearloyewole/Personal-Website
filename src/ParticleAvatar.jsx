@@ -251,7 +251,7 @@ function drawFrame(
   if (mode === "form" && offscreenImageCanvas) {
     const settledFrac = settledCount / N;
     const targetAlpha = settledFrac >= 0.85 ? 1 : 0;
-    revealAlphaRef.current += (targetAlpha - revealAlphaRef.current) * 0.01;
+    revealAlphaRef.current += (targetAlpha - revealAlphaRef.current) * 0.03;
 
     const a = Math.max(0, Math.min(1, revealAlphaRef.current));
     if (a > 0.01) {
