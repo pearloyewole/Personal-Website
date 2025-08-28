@@ -26,7 +26,7 @@
 }
 
 .App-header {
-  background-color: #8fbfa3;
+  background-color: #ccdfd4;
   min-height: 1vh;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@
   font-weight: 600;
   padding: 12px 24px;
   border-radius: 50px;
-  background: linear-gradient(135deg, #8fbfa3 0%, #5b8165 100%);
+  background: linear-gradient(135deg, #8fbfa3 0%, #a5b780 100%);
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
 }
@@ -225,7 +225,7 @@ button {
   position: relative;
   z-index: 2;
   margin-top: 1rem;
-  background: linear-gradient(135deg, #8fbfa3 0%, #5b8165 100%);
+  background: linear-gradient(135deg, #8fbfa3 0%, #a5b780 100%);
   color: white;
   border: none;
   padding: 15px 30px;
@@ -242,7 +242,7 @@ button {
 .content button:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(143, 191, 163, 0.4);
-  background: linear-gradient(135deg, #7aad8f 0%, #4a6b52 100%);
+  background: linear-gradient(135deg, #7aad8f 0%, #a5b780 100%);
 }
 
 .content button:active {

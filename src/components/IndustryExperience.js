@@ -207,8 +207,8 @@ function IndustryExperience() {
                     mr: 2, 
                     backgroundColor: 'transparent',
                     background: experience.id === 1 
-                      ? 'linear-gradient(45deg, #8fbfa3, #5b8165)'
-                      : 'linear-gradient(45deg, #5b8165, #8fbfa3)',
+                      ? 'linear-gradient(45deg, #8fbfa3 , #a5b780 )'
+                      : 'linear-gradient(45deg, #8fbfa3 , #a5b780)',
                     width: 56,
                     height: 56,
                     boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
@@ -220,7 +220,7 @@ function IndustryExperience() {
                       fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                       fontWeight: 600,
                       fontSize: '1.5rem',
-                      color: '#5b8165',
+                      color: '#a5b780',
                       textAlign: 'left'
                     }}>
                       {experience.company}
@@ -248,7 +248,7 @@ function IndustryExperience() {
                         </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                        <LocationOn sx={{ fontSize: 16, color: '#5b8165' }} />
+                        <LocationOn sx={{ fontSize: 16, color: '#a5b780' }} />
                         <Typography variant="body2" sx={{ 
                           fontSize: '0.9rem',
                           fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -283,7 +283,7 @@ function IndustryExperience() {
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
                       '&:hover': {
-                        backgroundColor: '#5b8165',
+                        backgroundColor: '#a5b780',
                         transform: 'translateY(-2px)',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
                       },
@@ -334,12 +334,12 @@ function IndustryExperience() {
                           fontSize: '0.8rem',
                           borderRadius: '16px',
                           borderColor: '#8fbfa3',
-                          color: '#5b8165',
+                          color: '#a5b780',
                           fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                           backgroundColor: 'rgba(143, 191, 163, 0.1)',
                           '&:hover': {
                             borderColor: '#5b8165',
-                            color: '#5b8165',
+                            color: '#a5b780',
                             backgroundColor: 'rgba(91, 129, 101, 0.15)',
                             transform: 'translateY(-1px)',
                             boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
