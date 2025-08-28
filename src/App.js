@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import ProfessionalExperience from './components/ProfessionalExperience';
 import IndustryExperience from './components/IndustryExperience';
+import Projects from './components/Projects';
 import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
 
@@ -28,7 +29,7 @@ function App() {
         <header className="App-header">
           <nav className="nav-menu">
             <Link to="/">About Me</Link>
-            <Link to="/personal-projects">Personal Projects</Link>
+            <Link to="/projects">Projects</Link>
             <Link to="/industry-experience">Industry Experience</Link>
             <Link to="/professional-experience">Research Experience</Link>
           </nav>
@@ -46,7 +47,14 @@ function App() {
                     {displayText}
                     <span className="cursor">|</span>
                   </p>
-                  <button>View My Resume</button>
+                  <a 
+  href="https://docs.google.com/document/d/1c3R7eHMeMLUmr6eyqvcmS8Y6ApgiPGXoLEhsQwmK4jY/edit?usp=sharing"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button>View My Resume</button>
+</a>
+
                 </div>
                 <ParticleAvatar
                   src="/intro-photo.png"
@@ -59,6 +67,7 @@ function App() {
             }
           />
           <Route path="/professional-experience" element={<ProfessionalExperience />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/industry-experience" element={<IndustryExperience />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

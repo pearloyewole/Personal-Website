@@ -39,8 +39,6 @@ function ProfessionalExperience() {
       description: "As part of Caltech's First Year Research Success Initiative's cohort, I worked with Comparative Planetary Evolution Postdoctoral Fellow, Dr. Junjie Dong, and another FSRI student to use machine learning to predict the melting curves of different ice phases. In order to do this, I utilized a variety of machine learning methods--- such as multi-class logistic regression and supervised learning methods (k-fold cross-validation, grid search). I also collected, labeled, and analyzed over 2000 data points of phase stability of hydrogen and water under extreme conditions.",
       location: "Pasadena, CA",
       type: "Research",
-      likes: 42,
-      comments: 8,
       hasPoster: true
     },
     {
@@ -52,8 +50,6 @@ function ProfessionalExperience() {
       description: "I conducted this research as 1 of the top 95 students out of 2000 applicants to the STEM Enhancement in Earth Science (SEES) internship program at NASA and the University of Texas Center for Space Research. I utilized MATLAB, Python libraries (NumPy, Matplotlib), and geophysical data processing techniques to create interferograms (images of surface deformation) and analyze satellite data under the guidance of UT Austin assistant professor Dr. Jinyi (Ann) Chen. Presented research poster and abstract at the 2023 American Geophysical Union Fall Meeting Bright Stars Poster Session.",
       location: "Austin, TX",
       type: "Internship",
-      likes: 67,
-      comments: 12,
       hasPoster: true
     },
     {
@@ -65,8 +61,6 @@ function ProfessionalExperience() {
       description: "I developed and programmed innovative computing-infused curriculum and software tools (games, simulations, tutorials, etc.) that was utilized by over 200 K-12 teachers participating in the Game2Learn Lab Research Experience for Teachers (RET). I specifically utilized Python and block-based programming to infuse computational thinking into non-computing courses. The goal of creating these computer science infused curriculums was to improve computer science education accessibility.",
       location: "Raleigh, NC",
       type: "Research",
-      likes: 38,
-      comments: 5,
       hasPoster: false
     }
   ];
