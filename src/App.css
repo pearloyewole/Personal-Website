@@ -126,9 +126,11 @@ h3 {
 }
 
 button {
-  position: relative;
+  position: center;
   z-index: 2;
   margin-top: 1rem;
+  margin-left: 1rem;
+  animation: slideInFromBottom 1s ease-out 2s both;
 }
 
 @media screen and (max-width: 768px) {
@@ -175,9 +177,6 @@ h3 {
   animation: slideInFromBottom 1s ease-out 1.5s both;
 }
 
-button {
-  animation: slideInFromBottom 1s ease-out 2s both;
-}
 
 .profile-image {
   animation: slideInFromBottom 1s ease-out 0.8s both;
@@ -225,7 +224,24 @@ button {
   position: relative;
   z-index: 2;
   margin-top: 1rem;
-  background: linear-gradient(135deg, #8fbfa3 0%, #a5b780 100%);
+  background: #b9d2c1;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+.frontpage button {
+  position: relative;
+  background: linear-gradient(135deg, #8fbfa3 0%, #cbe9d8 100%);
+  z-index: 2;
+  margin-top: 1rem;
   color: white;
   border: none;
   padding: 15px 30px;
