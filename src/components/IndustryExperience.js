@@ -29,7 +29,7 @@ function IndustryExperience() {
       title: "Data Visualization Tools Engineer",
       date: "March 2025 - Present",
       tools: ["D3.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
-      description: "Building data visualization tools for NASA JPL's OCO-3 mission to enable researchers to visualize from spaceborne SAM observations. Developed scalable, HCI-driven visualization interfaces using D3.js, Three.js, React, and WebGL for scientific and policy-facing applications. Created 2D/3D simulations to map emissions and productivity across cities, volcanoes, and ecological zones.",
+      description: "Developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Implemented backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
       location: "Pasadena, CA",
     },
     {
