@@ -36,7 +36,7 @@ function ProfessionalExperience() {
       company: "NASA & University of Texas Center for Space Research",
       title: "Research Intern",
       date: "June 2023 - August 2023",
-      tools: ["GMTSAR", "Alaska Data", "Python", "NumPy", "Matplotlib", "MATLAB"],
+      tools: [ "Python", "Curriculum Writing"],
       description: "I conducted this research as 1 of the top 95 students out of 2000 applicants to the STEM Enhancement in Earth Science (SEES) internship program at NASA and the University of Texas Center for Space Research. I utilized MATLAB, Python libraries (NumPy, Matplotlib), and geophysical data processing techniques to create interferograms (images of surface deformation) and analyze satellite data under the guidance of UT Austin assistant professor Dr. Jinyi (Ann) Chen. Presented research poster and abstract at the 2023 American Geophysical Union Fall Meeting Bright Stars Poster Session.",
       location: "Austin, TX",
       type: "Internship",
