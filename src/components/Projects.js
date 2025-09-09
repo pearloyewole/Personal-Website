@@ -63,6 +63,26 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 export default function Projects() {
   const projects = [
     {
+      id: 0,
+      title: "Soro - Yoruba Learning App",
+      org: "Solo Developer",
+      date: "Present",
+      location: "Houston, TX",
+      tags: ["React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
+      description:
+        "Designed and built a mobile app that helps learners practice Yoruba vocabulary, phrases, and pronunciation with a clean, focused experience. Integrated Firebase for auth and data, configured EAS builds, and prepared App Store distribution. This project taught me a lot about error handling and creating products that real users will interact with. I spent hours recreating crashes or bugs that would only occur in certain Testflights. Very fun to build and I update it regularly.",
+      mediaType: "image",
+      mediaUrl: "/soro.png", 
+      poster: "",
+      cta: [
+        {
+          label: "Download on the App Store",
+          href: "https://apps.apple.com/app/6752268695",
+          icon: <Language />,
+        },
+      ],
+    },
+    {
       id: 1,
       title: "Caltech BSU Website",
       org: "California Institute of Technology",
@@ -84,7 +104,7 @@ export default function Projects() {
       location: "New York, NY",
       tags: ["OCaml", "Bonsai", "HTML/CSS", "JavaScript", "Git", "Figma"],
       description:
-        "PC City is a city-building simulation game built using OCaml, with the Bonsai framework for reactive UI development in the browser. This game  combines functional programming, interactive web interfaces, complex logic engines, and real-time game state management.", 
+        "PC City is a city-building simulation game built using OCaml, with the Bonsai framework for reactive UI development in the browser. This game  combines functional programming, interactive web interfaces, complex logic engines, and real-time game state management.",
       mediaType: "image",
       mediaUrl: "/pc_city.png",
       cta: [
@@ -109,21 +129,19 @@ export default function Projects() {
       ],
     },
     {
-        id: 4,
-        title: "Flappy Joyride: Physics Engine Game",
-        org: "Introduction to Software Design (CS 3) Final Project",
-        date: "June 2025",
-        location: "Pasadena, CA ",
-        tags: ["C (Programming Language)", "SDL", " HTTP servers", "POSIX Sockets"],
-        description:
-          "Developed a 2D side-scrolling physics engine game in C with SDL, implementing player movement, gravity, collision detection, power-ups, AI enemies, and a survival-time scoring system. Additionally, created a lightweight HTTP web server in C to support the web functionality of the game.",
-        mediaType: "video",
-        mediaUrl: "/flappy_joyride.mp4",
-        poster: "/flappy-joyride.png",
-        cta: [
-          { label: "GitHub", href: "https://github.com/pearloyewole/flappy-joyride", icon: <Code /> },
-        ],
-      },
+      id: 4,
+      title: "Flappy Joyride: Physics Engine Game",
+      org: "Introduction to Software Design (CS 3) Final Project",
+      date: "June 2025",
+      location: "Pasadena, CA ",
+      tags: ["C (Programming Language)", "SDL", " HTTP servers", "POSIX Sockets"],
+      description:
+        "Developed a 2D side-scrolling physics engine game in C with SDL, implementing player movement, gravity, collision detection, power-ups, AI enemies, and a survival-time scoring system. Additionally, created a lightweight HTTP web server in C to support the web functionality of the game.",
+      mediaType: "video",
+      mediaUrl: "/flappy_joyride.mp4",
+      poster: "/flappy-joyride.png",
+      cta: [{ label: "GitHub", href: "https://github.com/pearloyewole/flappy-joyride", icon: <Code /> }],
+    },
   ];
 
   return (
