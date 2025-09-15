@@ -8,7 +8,6 @@ import {
   Typography, 
   Box, 
   Chip, 
-  IconButton, 
   Divider,
   Paper
 } from '@mui/material';
@@ -16,9 +15,6 @@ import {
   Work, 
   LocationOn, 
   CalendarToday, 
-  Favorite,
-  ChatBubbleOutline,
-  IosShare
 } from '@mui/icons-material';
 
 function IndustryExperience() {

@@ -62,6 +62,19 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 
 export default function Projects() {
   const projects = [
+     {
+      id: 6,
+      title: "Eden: AI Sustainability Tracker Chrome Extension for Claude.ai",
+      org: "HackMIT 2025",
+      date: "September 2025",
+      location: "Cambridge, MA",
+      tags: ["JSON", "React", "Typescript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
+      description: "Eden is a Chrome extension for claude.ai that monitors user's AI conversations and analyzes the environmental impact, shares better prompt engineering practices, and encourages users to think about AI sustainability.", 
+      mediaType: "video",
+      mediaUrl: "/eden-demo.mp4",
+      poster: "/eden.png",
+      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }],
+    },
     {
       id: 0,
       title: "Soro - Yoruba Learning App",
