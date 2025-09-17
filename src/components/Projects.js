@@ -73,7 +73,9 @@ export default function Projects() {
       mediaType: "video",
       mediaUrl: "/eden-demo.mp4",
       poster: "/eden.png",
-      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }],
+      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }, 
+        {label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647", icon: <Language />}
+      ],
     },
     {
       id: 0,
