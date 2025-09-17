@@ -83,7 +83,7 @@ export default function Projects() {
       org: "Solo Developer",
       date: "Present",
       location: "Houston, TX",
-      tags: ["React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
+      tags: ["XCode, React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
       description:
         "Designed and built a mobile app that helps learners practice Yoruba vocabulary, phrases, and pronunciation with a clean, focused experience. Integrated Firebase for auth and data, configured EAS builds, and prepared App Store distribution. This project taught me a lot about error handling and creating products that real users will interact with. I spent hours recreating crashes or bugs that would only occur in certain Testflights. Very fun to build and I update it regularly.",
       mediaType: "image",
