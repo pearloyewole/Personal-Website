@@ -52,16 +52,6 @@ function App() {
 
                   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                     
-                    <a
-                      href="https://docs.google.com/document/d/1c3R7eHMeMLUmr6eyqvcmS8Y6ApgiPGXoLEhsQwmK4jY/edit?usp=sharing"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button>
-                        <Description style={{ marginRight: 8, verticalAlign: 'middle' }} />
-                        Resume
-                      </button>
-                    </a>
 
                     <a
                       href="https://www.linkedin.com/in/pearl-oyewole/"
