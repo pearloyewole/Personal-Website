@@ -261,7 +261,7 @@ function IndustryExperience() {
                   {/* Company Link Button */}
                   <a 
                     href={experience.id === 1 
-                      ? "https://www.norric.com/" 
+                      ? "https://www.norric.ai/" 
                       : "https://www.janestreet.com/join-jane-street/programs-and-events/jsip/"
                     }
                     target="_blank"
