@@ -21,12 +21,13 @@ function IndustryExperience() {
   const experiences = [
     {
       id: 1,
-      company: "Data to Discovery + NASA Jet Propulsion Laboratory",
-      title: "Data Visualization Tools Engineer",
-      date: "March 2025 - Present",
-      tools: ["D3.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
-      description: "Developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
-      location: "Pasadena, CA",
+      company: "Norric",
+      title: "Software Engineering Intern",
+      date: "September 2025 - Present",
+      tools: ["MongoDB", "Express", "React", "Node.js", "Machine Learning", "APIs", "Data Integration"],
+      description: "Building and maintaining platform features, APIs, data integrations using MongoDB, Express, React, and Node.js. Designing user-facing components for transaction workflows, analytics, and compliance tools with product teams, and contribute to testing, deployment, and documentation for the alternative investments team. Researching, prototyping, and implementing machine learning models for risk assessment, fund analysis, and workflow automation cross-functionally.",
+      currentWork: "Private Markets Education Platform for 401(k) Plans with GenAI learning assistant, participant profiling for fund recommendations, and administrator dashboard. Integrates with SSO, HRIS, and recordkeeping systems.",
+      location: "New York, NY (Remote)",
     },
     {
       id: 2,
@@ -39,7 +40,7 @@ function IndustryExperience() {
     }
   ];
 
-  return (
+    return (
     <Box className="industry-experience" sx={{ 
       p: 2, 
       backgroundColor: '#fefefe', 
@@ -96,7 +97,7 @@ function IndustryExperience() {
             color: '#666',
             mb: 2
           }}>
-            Data Visualization • Software Engineering • HCI
+            Software Engineering • Machine Learning • Alternative Investments
           </Typography>
           
           {/* Stats section */}
@@ -143,7 +144,7 @@ function IndustryExperience() {
                 fontWeight: 600,
                 mb: 0.5
               }}>
-                10+
+                8+
               </Typography>
               <Typography variant="body2" sx={{ 
                 color: '#666',
@@ -260,7 +261,7 @@ function IndustryExperience() {
                   {/* Company Link Button */}
                   <a 
                     href={experience.id === 1 
-                      ? "https://datavis.caltech.edu/" 
+                      ? "https://www.norric.com/" 
                       : "https://www.janestreet.com/join-jane-street/programs-and-events/jsip/"
                     }
                     target="_blank"
@@ -286,7 +287,7 @@ function IndustryExperience() {
                       display: 'inline-block',
                       whiteSpace: 'nowrap'
                     }}>
-                      {experience.id === 1 ? 'Learn more about Data to Discovery →' : 'Learn more about Jane Street →'}
+                      {experience.id === 1 ? 'Learn more about Norric →' : 'Learn more about Jane Street →'}
                     </Box>
                   </a>
                 </Box>
@@ -357,6 +358,39 @@ function IndustryExperience() {
                   }}>
                     {experience.description}
                   </Typography>
+
+                  {/* Currently Working On - only show for Norric */}
+                  {experience.currentWork && (
+                    <Box sx={{
+                      mt: 2,
+                      p: 2,
+                      backgroundColor: 'rgba(143, 191, 163, 0.08)',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(143, 191, 163, 0.2)',
+                      borderLeft: '4px solid #8fbfa3'
+                    }}>
+                      <Typography variant="body2" sx={{
+                        fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        fontWeight: 600,
+                        color: '#5b8165',
+                        mb: 1,
+                        fontSize: '0.9rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1
+                      }}>
+                        Currently Working On
+                      </Typography>
+                      <Typography variant="body2" sx={{
+                        fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        color: '#333',
+                        fontSize: '1rem',
+                        lineHeight: 1.4
+                      }}>
+                        {experience.currentWork}
+                      </Typography>
+                    </Box>
+                  )}
                 </Box>
               </Box>
             </CardContent>
@@ -373,7 +407,7 @@ function IndustryExperience() {
         ))}
       </Box>
     </Box>
-  );
+    );
 }
 
 export default IndustryExperience; 

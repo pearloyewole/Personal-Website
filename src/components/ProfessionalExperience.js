@@ -22,6 +22,17 @@ function ProfessionalExperience() {
   const experiences = [
     {
       id: 1,
+      company: "Data to Discovery + NASA Jet Propulsion Laboratory",
+      title: "Data Visualization Tools Engineer",
+      date: "March 2025 - Present",
+      tools: ["D3.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
+      description: "Developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
+      location: "Pasadena, CA",
+      type: "Research",
+      hasPoster: false
+    },
+    {
+      id: 2,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
@@ -32,18 +43,18 @@ function ProfessionalExperience() {
       hasPoster: true
     },
     {
-      id: 2,
+      id: 3,
       company: "NASA & University of Texas Center for Space Research",
       title: "Research Intern",
       date: "June 2023 - August 2023",
-      tools: [ "Python", "Curriculum Writing"],
+      tools: ["GMTSAR", "Alaska Data", "Python", "NumPy", "Matplotlib", "MATLAB"],
       description: "I conducted this research as 1 of the top 95 students out of 2000 applicants to the STEM Enhancement in Earth Science (SEES) internship program at NASA and the University of Texas Center for Space Research. I utilized MATLAB, Python libraries (NumPy, Matplotlib), and geophysical data processing techniques to create interferograms (images of surface deformation) and analyze satellite data under the guidance of UT Austin assistant professor Dr. Jinyi (Ann) Chen. Presented research poster and abstract at the 2023 American Geophysical Union Fall Meeting Bright Stars Poster Session.",
       location: "Austin, TX",
       type: "Internship",
       hasPoster: true
     },
     {
-      id: 3,
+      id: 4,
       company: "North Carolina State University Game2Learn Lab",
       title: "Research Intern",
       date: "June 2021 - July 2022",
@@ -189,13 +200,28 @@ function ProfessionalExperience() {
                     <Typography variant="h6" gutterBottom sx={{ color: '#5b8165' }}>
                       Research Poster
                     </Typography>
+                    <Typography variant="body2" paragraph sx={{
+                      mb: 2,
+                      fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#666',
+                      fontSize: '0.9rem'
+                    }}>
+                      {experience.id === 2
+                        ? "View my research poster from the Caltech FSRI program"
+                        : experience.id === 3
+                        ? "View my research poster from the NASA SEES internship program"
+                        : "View my research poster from the Caltech FSRI program"
+                      }
+                    </Typography>
                     <Box sx={{ width: '100%', height: '300px', borderRadius: '12px', overflow: 'hidden' }}>
                       <StrictMode>
                         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                           <Viewer 
-                            fileUrl={experience.id === 1 
+                            fileUrl={experience.id === 2 
                               ? "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
-                              : "/SEES Poster.pdf"
+                              : experience.id === 3
+                              ? "/SEES Poster.pdf"
+                              : "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
                             }
                             plugins={[defaultLayoutPluginInstance]}
                             style={{ height: '100%', width: '100%' }}
