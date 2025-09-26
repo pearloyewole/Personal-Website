@@ -67,25 +67,26 @@ function ProfessionalExperience() {
   ];
 
   return (
-    <Box className="professional-experience" sx={{ 
+    <main className="professional-experience" sx={{ 
       p: 2, 
       backgroundColor: '#fefefe', 
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%)'
     }}>
       {/* Profile Header */}
-      <Paper elevation={0} sx={{ 
-        p: 4, 
-        mb: 4, 
-        textAlign: 'left', 
-        backgroundColor: 'white',
-        borderRadius: '24px',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-        border: '1px solid rgba(255,255,255,0.2)',
-        backdropFilter: 'blur(10px)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <header>
+        <Paper elevation={0} sx={{ 
+          p: 4, 
+          mb: 4, 
+          textAlign: 'left', 
+          backgroundColor: 'white',
+          borderRadius: '24px',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+          border: '1px solid rgba(255,255,255,0.2)',
+          backdropFilter: 'blur(10px)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
         <Box sx={{ position: 'relative', zIndex: 1 }}>
           <Typography variant="h4" component="h1" gutterBottom sx={{ 
             fontFamily: '"Newsreader", serif',
@@ -104,24 +105,27 @@ function ProfessionalExperience() {
             Research & Development • Machine Learning • Data Science/Visualization
           </Typography>
         </Box>
-      </Paper>
+        </Paper>
+      </header>
 
       {/* Experience Feed */}
-      <Box sx={{ maxWidth: 1000, mx: 'auto' }}>
-        {experiences.map((experience) => (
-          <Card key={experience.id} sx={{ 
-            mb: 4, 
-            borderRadius: '20px', 
-            boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            overflow: 'hidden',
-            transition: 'all 0.3s ease',
-            minHeight: '400px',
-            '&:hover': {
-              transform: 'translateY(-4px)',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.12)'
-            }
-          }}>
+      <section aria-label="Research Experience">
+        <Box sx={{ maxWidth: 1000, mx: 'auto' }}>
+          {experiences.map((experience) => (
+            <article key={experience.id}>
+              <Card sx={{ 
+                mb: 4, 
+                borderRadius: '20px', 
+                boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                overflow: 'hidden',
+                transition: 'all 0.3s ease',
+                minHeight: '400px',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.12)'
+                }
+              }}>
             <CardContent sx={{ p: 0, height: '100%' }}>
               {/* Header */}
               <Box sx={{ p: 3, pb: 2 }}>
@@ -233,10 +237,12 @@ function ProfessionalExperience() {
                 )}
               </Box>
             </CardContent>
-          </Card>
-        ))}
-      </Box>
-    </Box>
+              </Card>
+            </article>
+          ))}
+        </Box>
+      </section>
+    </main>
   );
 }
 

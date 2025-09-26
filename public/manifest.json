@@ -1,20 +1,27 @@
 {
-  "short_name": "Pearl",
-  "name": "Pearl Oyewole Portfolio",
+  "short_name": "Pearl Oyewole",
+  "name": "Pearl Oyewole | Computer Science Student at Caltech",
+  "description": "Portfolio of Pearl Oyewole, Computer Science student at Caltech with experience in software engineering, machine learning, and data visualization.",
   "icons": [
     {
       "src": "p-icon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "p-icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#5b8165",
+  "background_color": "#fefefe",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["education", "portfolio", "technology"]
 }
