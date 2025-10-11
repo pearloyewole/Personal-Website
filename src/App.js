@@ -7,7 +7,7 @@ import Projects from './components/Projects';
 import SEO from './components/SEO';
 import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
-import { Description, LinkedIn, Code, GitHub } from '@mui/icons-material';
+import { LinkedIn, GitHub } from '@mui/icons-material';
 
 function App() {
   const [displayText, setDisplayText] = useState('');

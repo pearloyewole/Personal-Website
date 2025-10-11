@@ -103,7 +103,7 @@ export default function Projects() {
       org: "California Institute of Technology",
       date: "Present",
       location: "Pasadena, CA",
-      tags: ["React.js", "Next.js", "Typescript", "HTML/CSS", "Supabase", "SMTP", "SQL" "Git", "Figma"],
+      tags: ["React.js", "Next.js", "Typescript", "HTML/CSS", "Supabase", "SMTP", "SQL", "Git", "Figma"],
       description:
         "Redesigned a legacy club website and rebuilt it in React + Typescript to meet the growing needs of the Black Student Union. Implemented Supabase auth and a database to centralize member and alumni information and resumes.",
       mediaType: "image",
