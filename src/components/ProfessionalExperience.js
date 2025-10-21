@@ -18,9 +18,6 @@ import fsriPoster from '../assets/fsriposter.png';
 import seesPoster from '../assets/seesposter.png';
 import yukonImage from '../assets/yukon.png';
 
-// Debug: Log the imported images
-console.log('Imported images:', { fsriPoster, seesPoster, yukonImage });
-
 function ProfessionalExperience() {
   const [imageErrors, setImageErrors] = useState({});
 
@@ -250,14 +247,10 @@ function ProfessionalExperience() {
                               alt={`Research Poster - ${experience.company}`}
                               onError={(e) => {
                                 console.error('Image failed to load:', e.target.src, 'for experience:', experience.id);
-                                console.error('Yukon image value:', yukonImage);
                                 setImageErrors(prev => ({ ...prev, [experience.id]: true }));
                               }}
                               onLoad={() => {
                                 console.log('Image loaded successfully for experience:', experience.id);
-                                if (experience.id === 1) {
-                                  console.log('Yukon image loaded successfully!');
-                                }
                               }}
                               sx={{
                                 width: '100%',
