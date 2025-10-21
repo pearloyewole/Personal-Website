@@ -26,7 +26,7 @@ function IndustryExperience() {
       date: "September 2025 - Present",
       tools: ["MongoDB", "Express", "React", "Node.js", "Machine Learning", "APIs", "Data Integration"],
       description: "Building and maintaining platform features, APIs, data integrations using MongoDB, Express, React, and Node.js. Designing user-facing components for transaction workflows, analytics, and compliance tools with product teams, and contribute to testing, deployment, and documentation for the alternative investments team. Researching, prototyping, and implementing machine learning models for risk assessment, fund analysis, and workflow automation cross-functionally.",
-      currentWork: "Private Markets Education Platform for 401(k) Plans with GenAI learning assistant, participant profiling for fund recommendations, and administrator dashboard. Integrates with SSO, HRIS, and recordkeeping systems.",
+      currentWork: "I’m working on Norric RFP, a tool that uses generative AI to automate and streamline RFP and DDQ responses for asset managers by extracting and organizing data from existing documents. I'm currently setting up the AI models and configuring the infrastructure on GCP to support intelligent document matching and AI-assisted content generation",
       location: "New York, NY (Remote)",
     },
     {

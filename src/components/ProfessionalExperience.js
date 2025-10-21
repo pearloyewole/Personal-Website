@@ -1,9 +1,5 @@
-import React, { StrictMode } from 'react';
+import React, { useState } from 'react';
 import './ProfessionalExperience.css';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { 
   Card, 
   CardContent, 
@@ -12,12 +8,21 @@ import {
   Box, 
   Chip, 
   Divider,
-  Paper
+  Paper,
+  Button
 } from '@mui/material';
-import { Work, LocationOn, CalendarToday } from '@mui/icons-material';
+import { Work, LocationOn, CalendarToday, Download, OpenInNew } from '@mui/icons-material';
+
+// Import images
+import fsriPoster from '../assets/fsriposter.png';
+import seesPoster from '../assets/seesposter.png';
+import yukonImage from '../assets/yukon.png';
+
+// Debug: Log the imported images
+console.log('Imported images:', { fsriPoster, seesPoster, yukonImage });
 
 function ProfessionalExperience() {
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const [imageErrors, setImageErrors] = useState({});
 
   const experiences = [
     {
@@ -29,7 +34,8 @@ function ProfessionalExperience() {
       description: "Developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
       location: "Pasadena, CA",
       type: "Research",
-      hasPoster: false
+      hasPoster: false,
+      hasImage: true
     },
     {
       id: 2,
@@ -194,44 +200,117 @@ function ProfessionalExperience() {
                 {/* Poster Column */}
                 {experience.hasPoster && (
                   <Box sx={{ 
-                    flex: '0 0 40%',
+                    flex: '0 0 60%',
                     p: 2, 
                     backgroundColor: '#f8f9ff', 
                     borderRadius: '16px',
                     border: '1px solid #e8eaff',
                     height: 'fit-content'
                   }}>
-                    <Typography variant="h6" gutterBottom sx={{ color: '#5b8165' }}>
-                      Research Poster
-                    </Typography>
-                    <Typography variant="body2" paragraph sx={{
-                      mb: 2,
-                      fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                      color: '#666',
-                      fontSize: '0.9rem'
-                    }}>
-                      {experience.id === 2
-                        ? "View my research poster from the Caltech FSRI program"
-                        : experience.id === 3
-                        ? "View my research poster from the NASA SEES internship program"
-                        : "View my research poster from the Caltech FSRI program"
-                      }
-                    </Typography>
-                    <Box sx={{ width: '100%', height: '300px', borderRadius: '12px', overflow: 'hidden' }}>
-                      <StrictMode>
-                        <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-                          <Viewer 
-                            fileUrl={experience.id === 2 
-                              ? "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
-                              : experience.id === 3
-                              ? "/SEES Poster.pdf"
-                              : "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
-                            }
-                            plugins={[defaultLayoutPluginInstance]}
-                            style={{ height: '100%', width: '100%' }}
-                          />
-                        </Worker>
-                      </StrictMode>
+                    <Box sx={{ width: '100%', height: '500px', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e0e0e0' }}>
+                      <Box sx={{ 
+                        height: '100%', 
+                        display: 'flex', 
+                        flexDirection: 'column',
+                        backgroundColor: '#f8f9fa'
+                      }}>
+                        {/* PDF Preview */}
+                        <Box sx={{ 
+                          flex: 1, 
+                          position: 'relative',
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          border: '1px solid #e0e0e0'
+                        }}>
+                          {imageErrors[experience.id] ? (
+                            <Box sx={{
+                              width: '100%',
+                              height: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              backgroundColor: '#f8f9fa',
+                              color: '#666'
+                            }}>
+                              <Typography variant="body2">
+                                Image preview not available
+                              </Typography>
+                            </Box>
+                          ) : (
+                            <Box
+                              component="img"
+                              src={experience.id === 1
+                                ? yukonImage
+                                : experience.id === 2 
+                                ? fsriPoster
+                                : experience.id === 3
+                                ? seesPoster
+                                : fsriPoster
+                              }
+                              alt={`Research Poster - ${experience.company}`}
+                              onError={(e) => {
+                                console.error('Image failed to load:', e.target.src, 'for experience:', experience.id);
+                                console.error('Yukon image value:', yukonImage);
+                                setImageErrors(prev => ({ ...prev, [experience.id]: true }));
+                              }}
+                              onLoad={() => {
+                                console.log('Image loaded successfully for experience:', experience.id);
+                                if (experience.id === 1) {
+                                  console.log('Yukon image loaded successfully!');
+                                }
+                              }}
+                              sx={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                borderRadius: '12px'
+                              }}
+                            />
+                          )}
+                        </Box>
+                        
+                        {/* Action Buttons */}
+                        <Box sx={{ 
+                          p: 2, 
+                          backgroundColor: 'white',
+                          borderTop: '1px solid #e0e0e0',
+                          display: 'flex', 
+                          gap: 2, 
+                          justifyContent: 'center',
+                          flexWrap: 'wrap'
+                        }}>
+                          {experience.id === 1 ? (
+                            <Button
+                              variant="contained"
+                              startIcon={<OpenInNew />}
+                              href="https://datavis.caltech.edu/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              sx={{ 
+                                backgroundColor: '#8fbfa3',
+                                '&:hover': { backgroundColor: '#a5b780' }
+                              }}
+                            >
+                              Learn More About Data to Discovery
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="outlined"
+                              startIcon={<Download />}
+                              href={experience.id === 2 
+                                ? "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
+                                : experience.id === 3
+                                ? "/SEES Poster.pdf"
+                                : "/2024 FSRI-Research-Poster_At-the-Core-of-Uranus.pdf"
+                              }
+                              download
+                              sx={{ borderColor: '#8fbfa3', color: '#8fbfa3' }}
+                            >
+                              View PDF
+                            </Button>
+                          )}
+                        </Box>
+                      </Box>
                     </Box>
                   </Box>
                 )}

@@ -8,6 +8,7 @@ import SEO from './components/SEO';
 import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
 import { LinkedIn, GitHub } from '@mui/icons-material';
+import introPhoto from './assets/intro-photo.png';
 
 function App() {
   const [displayText, setDisplayText] = useState('');
@@ -87,7 +88,7 @@ function App() {
                     </div>
 
                     <ParticleAvatar
-                      src="/intro-photo.png"
+                      src={introPhoto}
                       alt="Pearl Oyewole, Computer Science student at Caltech"
                       width={320}
                       density={5}

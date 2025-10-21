@@ -20,6 +20,16 @@ import {
   Language,
 } from "@mui/icons-material";
 
+// Import all media files
+import edenDemo from '../assets/eden-demo.mp4';
+import edenPoster from '../assets/eden.png';
+import soroImage from '../assets/soro.png';
+import bsuWebsite from '../assets/bsu-website.png';
+import pcCity from '../assets/pc_city.png';
+import sortWise from '../assets/sort_wise.png';
+import flappyJoyride from '../assets/flappy_joyride.mp4';
+import flappyPoster from '../assets/flappy-joyride.png';
+
 function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
   if (!mediaType || !mediaUrl) return null;
   if (mediaType === "image") {
@@ -71,8 +81,8 @@ export default function Projects() {
       tags: ["JSON", "React", "Typescript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
       description: "Eden is a Chrome extension for claude.ai that monitors user's AI conversations and analyzes the environmental impact, shares better prompt engineering practices, and encourages users to think about AI sustainability.", 
       mediaType: "video",
-      mediaUrl: "/eden-demo.mp4",
-      poster: "/eden.png",
+      mediaUrl: edenDemo,
+      poster: edenPoster,
       cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }, 
         {label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647", icon: <Language />}
       ],
@@ -87,7 +97,7 @@ export default function Projects() {
       description:
         "Designed and built a mobile app that helps learners practice Yoruba vocabulary, phrases, and pronunciation with a clean, focused experience. Integrated Firebase for auth and data, configured EAS builds, and prepared App Store distribution. This project taught me a lot about error handling and creating products that real users will interact with. I spent hours recreating crashes or bugs that would only occur in certain Testflights. Very fun to build and I update it regularly.",
       mediaType: "image",
-      mediaUrl: "/soro.png", 
+      mediaUrl: soroImage, 
       poster: "",
       cta: [
         {
@@ -107,7 +117,7 @@ export default function Projects() {
       description:
         "Redesigned a legacy club website and rebuilt it in React + Typescript to meet the growing needs of the Black Student Union. Implemented Supabase auth and a database to centralize member and alumni information and resumes.",
       mediaType: "image",
-      mediaUrl: "/bsu-website.png",
+      mediaUrl: bsuWebsite,
       poster: "",
       cta: [{ label: "View Site", href: "https://caltech-bsu.vercel.app/", icon: <Language /> }],
     },
@@ -121,7 +131,7 @@ export default function Projects() {
       description:
         "PC City is a city-building simulation game built using OCaml, with the Bonsai framework for reactive UI development in the browser. This game  combines functional programming, interactive web interfaces, complex logic engines, and real-time game state management.",
       mediaType: "image",
-      mediaUrl: "/pc_city.png",
+      mediaUrl: pcCity,
       cta: [
         { label: "Play Game", href: "https://pearloyewole.github.io/pc_city-play/", icon: <PlayCircle /> },
         { label: "GitHub", href: "https://github.com/christineogo/PC_city", icon: <Code /> },
@@ -137,7 +147,7 @@ export default function Projects() {
       description:
         "SortWise is a web application that uses a 90% accurate custom-trained machine learning model built with TensorFlow to classify images of waste into categories like plastic, paper, or metal. Built with React and connected to a FastAPI backend, it guides users on how to dispose of trash responsibly.",
       mediaType: "image",
-      mediaUrl: "/sort_wise.png",
+      mediaUrl: sortWise,
       cta: [
         { label: "Try it out", href: "https://sort-wise.vercel.app/", icon: <PlayCircle /> },
         { label: "GitHub", href: "https://github.com/pearloyewole/SortWise", icon: <Code /> },
@@ -153,8 +163,8 @@ export default function Projects() {
       description:
         "Developed a 2D side-scrolling physics engine game in C with SDL, implementing player movement, gravity, collision detection, power-ups, AI enemies, and a survival-time scoring system. Additionally, created a lightweight HTTP web server in C to support the web functionality of the game.",
       mediaType: "video",
-      mediaUrl: "/flappy_joyride.mp4",
-      poster: "/flappy-joyride.png",
+      mediaUrl: flappyJoyride,
+      poster: flappyPoster,
       cta: [{ label: "GitHub", href: "https://github.com/pearloyewole/flappy-joyride", icon: <Code /> }],
     },
   ];
