@@ -48,8 +48,8 @@ function App() {
                 <>
                   <SEO 
                     title="Pearl Oyewole | Computer Science Student at Caltech | Software Engineer & Researcher"
-                    description="Pearl Oyewole is a Computer Science student at Caltech with experience in software engineering, machine learning, and data visualization. Explore her research at NASA JPL, internships at Norric and Jane Street, and innovative projects."
-                    keywords="Pearl Oyewole, Caltech, Computer Science, Software Engineer, Machine Learning, Data Visualization, NASA JPL, Norric, Jane Street, React, Python, JavaScript, Portfolio, Research, Internship"
+                    description="Pearl Oyewole is a Computer Science student at Caltech with experience in software engineering, machine learning, and data visualization. Explore her research at NASA JPL, internships at CrowdStrike and Jane Street, and innovative projects."
+                    keywords="Pearl Oyewole, Caltech, Computer Science, Software Engineer, Machine Learning, Data Visualization, NASA JPL, CrowdStrike, Jane Street, React, Python, JavaScript, Portfolio, Research, Internship"
                     url="https://pearloyewole.com/"
                   />
                   <div className="content">
@@ -124,9 +124,9 @@ function App() {
             <Route path="/industry-experience" element={
               <>
                 <SEO 
-                  title="Industry Experience | Pearl Oyewole | Norric, Jane Street Internships"
-                  description="Learn about Pearl Oyewole's industry experience including software engineering internships at Norric and Jane Street Capital. Experience with full-stack development, machine learning, and financial technology."
-                  keywords="Pearl Oyewole, Industry Experience, Software Engineering Intern, Norric, Jane Street Capital, Full-stack Development, Machine Learning, Financial Technology, OCaml"
+                  title="Industry Experience | Pearl Oyewole | CrowdStrike, Jane Street Internships"
+                  description="Learn about Pearl Oyewole's industry experience including customer success automation at CrowdStrike and software engineering at Jane Street Capital. Experience with Python automation, full-stack development, and financial technology."
+                  keywords="Pearl Oyewole, Industry Experience, Customer Success Automation Intern, CrowdStrike, Jane Street Capital, Python, Automation, Full-stack Development, Financial Technology, OCaml"
                   url="https://pearloyewole.com/industry-experience"
                 />
                 <IndustryExperience />

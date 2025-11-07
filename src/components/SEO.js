@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ 
   title = "Pearl Oyewole | Computer Science Student at Caltech",
-  description = "Computer Science student at Caltech with experience in software engineering, machine learning, and data visualization. Research at NASA JPL, internships at Norric and Jane Street.",
-  keywords = "Pearl Oyewole, Caltech, Computer Science, Software Engineer, Machine Learning, Data Visualization, NASA JPL, Norric, Jane Street, React, Python, JavaScript, Portfolio, Research, Internship",
+  description = "Computer Science student at Caltech with experience in software engineering, machine learning, and data visualization. Research at NASA JPL, internships at CrowdStrike and Jane Street.",
+  keywords = "Pearl Oyewole, Caltech, Computer Science, Software Engineer, Machine Learning, Data Visualization, NASA JPL, CrowdStrike, Jane Street, React, Python, JavaScript, Portfolio, Research, Internship",
   image = "/intro-photo.png",
   url = "https://pearloyewole.com",
   type = "website"

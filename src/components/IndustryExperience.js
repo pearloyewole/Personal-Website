@@ -21,13 +21,12 @@ function IndustryExperience() {
   const experiences = [
     {
       id: 1,
-      company: "Norric",
-      title: "Software Engineering Intern",
-      date: "September 2025 - Present",
-      tools: ["MongoDB", "Express", "React", "Node.js", "Machine Learning", "APIs", "Data Integration"],
-      description: "Building and maintaining platform features, APIs, data integrations using MongoDB, Express, React, and Node.js. Designing user-facing components for transaction workflows, analytics, and compliance tools with product teams, and contribute to testing, deployment, and documentation for the alternative investments team. Researching, prototyping, and implementing machine learning models for risk assessment, fund analysis, and workflow automation cross-functionally.",
-      currentWork: "I’m working on Norric RFP, a tool that uses generative AI to automate and streamline RFP and DDQ responses for asset managers by extracting and organizing data from existing documents. I'm currently setting up the AI models and configuring the infrastructure on GCP to support intelligent document matching and AI-assisted content generation",
-      location: "New York, NY (Remote)",
+      company: "CrowdStrike",
+      title: "Customer Success Automation Intern",
+      date: "October 2025 - Present",
+      tools: ["Python", "Automation", "APIs", "Testing", "Integration Pipelines"],
+      description: "As a Customer Success Automation Intern at CrowdStrike, I collaborate with cross-functional teams to design and implement automation solutions that streamline internal workflows and enhance overall system efficiency. My work focuses on developing and maintaining Python-based automation platforms that improve customer ticket resolution and enable automated presentation generation. I also contribute to extending platform capabilities and integration pipelines by writing robust, testable Python code and expanding functional test coverage, driving measurable improvements in performance, reliability, and scalability across customer success operations.",
+      location: "Remote",
     },
     {
       id: 2,
@@ -265,7 +264,7 @@ function IndustryExperience() {
                   {/* Company Link Button */}
                   <a 
                     href={experience.id === 1 
-                      ? "https://www.norric.ai/" 
+                      ? "https://www.crowdstrike.com/" 
                       : "https://www.janestreet.com/join-jane-street/programs-and-events/jsip/"
                     }
                     target="_blank"
@@ -291,7 +290,7 @@ function IndustryExperience() {
                       display: 'inline-block',
                       whiteSpace: 'nowrap'
                     }}>
-                      {experience.id === 1 ? 'Learn more about Norric →' : 'Learn more about Jane Street →'}
+                      {experience.id === 1 ? 'Learn more about CrowdStrike →' : 'Learn more about Jane Street →'}
                     </Box>
                   </a>
                 </Box>
@@ -363,7 +362,7 @@ function IndustryExperience() {
                     {experience.description}
                   </Typography>
 
-                  {/* Currently Working On - only show for Norric */}
+                  {/* Currently Working On */}
                   {experience.currentWork && (
                     <Box sx={{
                       mt: 2,
