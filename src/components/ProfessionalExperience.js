@@ -25,10 +25,10 @@ function ProfessionalExperience() {
     {
       id: 1,
       company: "Data to Discovery + NASA Jet Propulsion Laboratory",
-      title: "Data Visualization Tools Engineer",
+      title: "Data Visualization Developer",
       date: "March 2025 - Present",
       tools: ["D3.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
-      description: "Developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
+      description: "Designing and developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Creating intuitive user interfaces and interactive visualizations that enable researchers to explore complex scientific data. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to design and deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
       location: "Pasadena, CA",
       type: "Research",
       hasPoster: false,
@@ -171,6 +171,38 @@ function ProfessionalExperience() {
                       </Typography>
                     </Box>
                   </Box>
+                  
+                  {/* Learn More Button for Data to Discovery */}
+                  {experience.id === 1 && (
+                    <a 
+                      href="https://datavis.caltech.edu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <Box sx={{
+                        px: 2.5,
+                        py: 1,
+                        backgroundColor: '#8fbfa3',
+                        color: 'white',
+                        borderRadius: '16px',
+                        fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                        fontSize: '0.8rem',
+                        fontWeight: 500,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          backgroundColor: '#a5b780',
+                          transform: 'translateY(-2px)',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                        },
+                        display: 'inline-block',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        Learn More →
+                      </Box>
+                    </a>
+                  )}
                 </Box>
               </Box>
 
@@ -179,7 +211,7 @@ function ProfessionalExperience() {
               {/* Content Area - Description and Poster */}
               <Box sx={{ p: 3, pt: 2, display: 'flex', gap: 4, alignItems: 'flex-start' }}>
                 {/* Description Column */}
-                <Box sx={{ flex: experience.hasPoster ? '1 1 55%' : '1 1 100%' }}>
+                <Box sx={{ flex: (experience.hasPoster || experience.hasImage) ? '1 1 55%' : '1 1 100%' }}>
                   <Typography variant="body2" sx={{ mb: 2, color: '#666' }}>
                     🛠️ Tools & Technologies
                   </Typography>
@@ -194,8 +226,8 @@ function ProfessionalExperience() {
                   </Typography>
                 </Box>
 
-                {/* Poster Column */}
-                {experience.hasPoster && (
+                {/* Image/Poster Column */}
+                {(experience.hasPoster || experience.hasImage) && (
                   <Box sx={{ 
                     flex: '0 0 60%',
                     p: 2, 
@@ -237,14 +269,14 @@ function ProfessionalExperience() {
                             <Box
                               component="img"
                               src={experience.id === 1
-                                ? yukonImage
+                                ? "/image.png"
                                 : experience.id === 2 
                                 ? fsriPoster
                                 : experience.id === 3
                                 ? seesPoster
                                 : fsriPoster
                               }
-                              alt={`Research Poster - ${experience.company}`}
+                              alt={experience.id === 1 ? `Data Visualization - ${experience.company}` : `Research Poster - ${experience.company}`}
                               onError={(e) => {
                                 console.error('Image failed to load:', e.target.src, 'for experience:', experience.id);
                                 setImageErrors(prev => ({ ...prev, [experience.id]: true }));
@@ -255,8 +287,9 @@ function ProfessionalExperience() {
                               sx={{
                                 width: '100%',
                                 height: '100%',
-                                objectFit: 'cover',
-                                borderRadius: '12px'
+                                objectFit: 'contain',
+                                borderRadius: '12px',
+                                backgroundColor: experience.id === 1 ? '#000' : 'transparent'
                               }}
                             />
                           )}
