@@ -1,14 +1,41 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import ProfessionalExperience from './components/ProfessionalExperience';
-import IndustryExperience from './components/IndustryExperience';
+import Experience from './components/Experience';
 import Projects from './components/Projects';
 import SEO from './components/SEO';
 import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
 import { LinkedIn, GitHub } from '@mui/icons-material';
 import introPhoto from './assets/intro-photo.png';
+
+function Navigation() {
+  return (
+    <header className="App-header" role="banner">
+      <nav className="nav-menu" role="navigation" aria-label="Main navigation">
+        <NavLink 
+          to="/" 
+          className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+          end
+        >
+          About
+        </NavLink>
+        <NavLink 
+          to="/projects" 
+          className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+        >
+          Projects
+        </NavLink>
+        <NavLink 
+          to="/experience" 
+          className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+        >
+          Experience
+        </NavLink>
+      </nav>
+    </header>
+  );
+}
 
 function App() {
   const [displayText, setDisplayText] = useState('');
@@ -32,14 +59,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <div className="App">
-          <header className="App-header" role="banner">
-            <nav className="nav-menu" role="navigation" aria-label="Main navigation">
-              <Link to="/">About Me</Link>
-              <Link to="/projects">Projects</Link>
-              <Link to="/industry-experience">Industry Experience</Link>
-              <Link to="/professional-experience">Research Experience</Link>
-            </nav>
-          </header>
+          <Navigation />
 
           <Routes>
             <Route
@@ -87,27 +107,30 @@ function App() {
                       </div>
                     </div>
 
-                    <ParticleAvatar
-                      src={introPhoto}
-                      alt="Pearl Oyewole, Computer Science student at Caltech"
-                      width={320}
-                      density={5}
-                      dotSize={1.7}
-                      cycleSeconds={6}
-                    />
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                      <ParticleAvatar
+                        src={introPhoto}
+                        alt="Pearl Oyewole, Computer Science student at Caltech"
+                        width={320}
+                        density={5}
+                        dotSize={1.7}
+                        cycleSeconds={6}
+                      />
+                      <p className="avatar-hint">click on me!:</p>
+                    </div>
                   </div>
                 </>
               }
             />
-            <Route path="/professional-experience" element={
+            <Route path="/experience" element={
               <>
                 <SEO 
-                  title="Research Experience | Pearl Oyewole | NASA JPL, Caltech Research"
-                  description="Explore Pearl Oyewole's research experience including data visualization work at NASA JPL, machine learning research at Caltech, and NASA SEES internship. View research posters and publications."
-                  keywords="Pearl Oyewole, Research Experience, NASA JPL, Caltech, Data Visualization, Machine Learning, Research Posters, Scientific Research, Computer Science Research"
-                  url="https://pearloyewole.com/professional-experience"
+                  title="Experience | Pearl Oyewole | Industry & Research Experience"
+                  description="Explore Pearl Oyewole's experience including industry work at CrowdStrike and Jane Street, and research at NASA JPL and Caltech. Software engineering, machine learning, and data visualization."
+                  keywords="Pearl Oyewole, Experience, Industry Experience, Research Experience, NASA JPL, Caltech, CrowdStrike, Jane Street, Software Engineering, Machine Learning, Data Visualization"
+                  url="https://pearloyewole.com/experience"
                 />
-                <ProfessionalExperience />
+                <Experience />
               </>
             } />
             <Route path="/projects" element={
@@ -121,17 +144,8 @@ function App() {
                 <Projects />
               </>
             } />
-            <Route path="/industry-experience" element={
-              <>
-                <SEO 
-                  title="Industry Experience | Pearl Oyewole | CrowdStrike, Jane Street Internships"
-                  description="Learn about Pearl Oyewole's industry experience including customer success automation at CrowdStrike and software engineering at Jane Street Capital. Experience with Python automation, full-stack development, and financial technology."
-                  keywords="Pearl Oyewole, Industry Experience, Customer Success Automation Intern, CrowdStrike, Jane Street Capital, Python, Automation, Full-stack Development, Financial Technology, OCaml"
-                  url="https://pearloyewole.com/industry-experience"
-                />
-                <IndustryExperience />
-              </>
-            } />
+            <Route path="/industry-experience" element={<Navigate to="/experience" replace />} />
+            <Route path="/professional-experience" element={<Navigate to="/experience" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>

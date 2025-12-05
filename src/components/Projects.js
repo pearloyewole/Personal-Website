@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Projects.css";
+import ProjectNodeMap from "./ProjectNodeMap";
 import {
   Card,
   CardContent,
-  Avatar,
   Typography,
   Box,
   Chip,
@@ -12,7 +13,6 @@ import {
   Stack,
 } from "@mui/material";
 import {
-  Work,
   CalendarToday,
   LocationOn,
   PlayCircle,
@@ -38,7 +38,7 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
         component="img"
         src={mediaUrl}
         alt={alt}
-        sx={{ width: "100%", height: 300, objectFit: "cover", borderRadius: 2 }}
+        sx={{ width: "100%", height: { xs: 200, sm: 250, md: 300 }, objectFit: "cover", borderRadius: 2 }}
       />
     );
   }
@@ -49,7 +49,7 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
         src={mediaUrl}
         poster={poster}
         controls
-        sx={{ width: "100%", height: 300, borderRadius: 2, backgroundColor: "#000", objectFit: "cover" }}
+        sx={{ width: "100%", height: { xs: 200, sm: 250, md: 300 }, borderRadius: 2, backgroundColor: "#000", objectFit: "cover" }}
       />
     );
   }
@@ -172,7 +172,8 @@ export default function Projects() {
   return (
     <Box
       sx={{
-        p: 2,
+        p: { xs: 2, md: 4 },
+        pt: { xs: 4, md: 6 },
         backgroundColor: "#fefefe",
         minHeight: "100vh",
         background: "linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%)",
@@ -181,13 +182,14 @@ export default function Projects() {
       <Paper
         elevation={0}
         sx={{
-          p: 4,
+          p: { xs: 3, md: 4 },
           mb: 4,
+          mx: { xs: 1, md: 2 },
           textAlign: "left",
           backgroundColor: "white",
           borderRadius: "24px",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-          border: "1px solid rgba(255,255,255,0.2)",
+          boxShadow: "none",
+          border: "none",
           backdropFilter: "blur(10px)",
           position: "relative",
           overflow: "hidden",
@@ -220,65 +222,123 @@ export default function Projects() {
           }}
         />
         <Box sx={{ position: "relative", zIndex: 1 }}>
-          <Typography
-            variant="h4"
-            component="h1"
-            gutterBottom
-            sx={{
-              fontFamily: '"Newsreader", serif',
-              fontWeight: 400,
-              fontSize: "3rem",
-              color: "#5b8165",
-            }}
-          >
-            Projects
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              fontSize: "1.2rem",
-              fontFamily:
-                '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
-              color: "#666",
-              mb: 2,
-            }}
-          >
-            Yes, I code for fun. My projects utilize different skills and tools, and I’m always excited to pick up a new stack and see what I can build with it.
-          </Typography>
+          <Box sx={{ 
+            display: 'grid', 
+            gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+            gap: { xs: 3, md: 4 },
+            alignItems: 'center'
+          }}>
+            {/* Text Content */}
+            <Box>
+              <Typography
+                variant="h4"
+                component="h1"
+                sx={{
+                  fontFamily: '"Newsreader", serif',
+                  fontWeight: 400,
+                  fontSize: { xs: "2rem", md: "3rem" },
+                  color: "#5b8165",
+                  mb: 2,
+                }}
+              >
+                Projects
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  fontFamily:
+                    '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+                  color: "#666",
+                  mb: 2,
+                  whiteSpace: 'pre-line',
+                }}
+              >
+                Yes, I code for fun. My projects utilize different skills and tools, and I'm always excited to pick up a new stack and see what I can build with it.{'\n\n'}Explore my projects and the tools I have used to build them!
+              </Typography>
+            </Box>
+
+            {/* 3D Node Map - Embedded */}
+            <Box sx={{ 
+              height: { xs: '300px', md: '400px', lg: '450px' },
+              borderRadius: '16px',
+              overflow: 'hidden',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+              backgroundColor: 'transparent'
+            }}>
+              <ProjectNodeMap 
+                projects={projects}
+                embedded={true}
+                onNodeClick={(project) => {
+                  // Scroll to the project card
+                  const element = document.getElementById(`project-${project.id}`);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Highlight the card briefly
+                    element.style.animation = 'highlight 1s ease-out';
+                    setTimeout(() => {
+                      element.style.animation = '';
+                    }, 1000);
+                  }
+                }}
+              />
+            </Box>
+          </Box>
         </Box>
       </Paper>
 
-      <Box sx={{ maxWidth: 1100, mx: "auto" }}>
-        {projects.map((p) => (
+      <Box sx={{ 
+        maxWidth: 1400, 
+        mx: "auto", 
+        px: { xs: 1, md: 2 },
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+        gap: { xs: 2, md: 4 }
+      }}>
+        {projects.map((p, index) => (
           <Card
             key={p.id}
+            id={`project-${p.id}`}
+            style={{
+              animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+            }}
             sx={{
-              mb: 4,
+              height: '100%',
               borderRadius: "20px",
               boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
               border: "1px solid rgba(255,255,255,0.2)",
               overflow: "hidden",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                transform: "translateY(-4px)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
+              transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+              display: 'flex',
+              flexDirection: 'column',
+              position: 'relative',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'linear-gradient(135deg, rgba(143, 191, 163, 0.05) 0%, rgba(91, 129, 101, 0.05) 100%)',
+                opacity: 0,
+                transition: 'opacity 0.4s ease',
+                zIndex: 0
               },
+              "&:hover": {
+                transform: "translateY(-8px) scale(1.02)",
+                boxShadow: "0 25px 70px rgba(91, 129, 101, 0.2)",
+                '&::before': {
+                  opacity: 1
+                }
+              },
+              "&:hover .project-content": {
+                transform: "translateY(-2px)"
+              }
             }}
           >
-            <CardContent sx={{ p: 0 }}>
-              <Box sx={{ p: 3, pb: 2 }}>
+            <CardContent sx={{ p: 0, position: 'relative', zIndex: 1 }} className="project-content">
+              <Box sx={{ p: { xs: 2, md: 3 }, pb: 2 }}>
                 <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
-                  <Avatar
-                    sx={{
-                      mr: 2,
-                      background: "linear-gradient(45deg, #8fbfa3, #5b8165)",
-                      width: 56,
-                      height: 56,
-                      boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-                    }}
-                  >
-                    <Work sx={{ color: "#fff" }} />
-                  </Avatar>
                   <Box sx={{ flex: 1 }}>
                     <Typography
                       variant="h6"
@@ -288,7 +348,7 @@ export default function Projects() {
                         fontFamily:
                           '"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
                         fontWeight: 600,
-                        fontSize: "1.5rem",
+                        fontSize: { xs: "1.2rem", md: "1.5rem" },
                         color: "#5b8165",
                         textAlign: "left",
                       }}
@@ -303,7 +363,7 @@ export default function Projects() {
                         mb: 1,
                         fontFamily:
                           '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
-                        fontSize: "1.05rem",
+                        fontSize: { xs: "0.95rem", md: "1.05rem" },
                         textAlign: "left",
                       }}
                     >
@@ -313,17 +373,17 @@ export default function Projects() {
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        gap: 2,
+                        gap: { xs: 1, md: 2 },
                         mb: 1,
                         flexWrap: "wrap",
                       }}
                     >
                       <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                        <CalendarToday sx={{ fontSize: 16, color: "#8fbfa3" }} />
+                        <CalendarToday sx={{ fontSize: { xs: 14, md: 16 }, color: "#8fbfa3" }} />
                         <Typography
                           variant="body2"
                           sx={{
-                            fontSize: "0.9rem",
+                            fontSize: { xs: "0.8rem", md: "0.9rem" },
                             fontFamily: '"Sometype Mono", monospace',
                             color: "#666",
                             textAlign: "left",
@@ -333,11 +393,11 @@ export default function Projects() {
                         </Typography>
                       </Box>
                       <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                        <LocationOn sx={{ fontSize: 16, color: "#5b8165" }} />
+                        <LocationOn sx={{ fontSize: { xs: 14, md: 16 }, color: "#5b8165" }} />
                         <Typography
                           variant="body2"
                           sx={{
-                            fontSize: "0.9rem",
+                            fontSize: { xs: "0.8rem", md: "0.9rem" },
                             fontFamily: '"Sometype Mono", monospace',
                             color: "#666",
                             textAlign: "left",
@@ -353,29 +413,41 @@ export default function Projects() {
 
               <Divider sx={{ mx: 3, opacity: 0.3 }} />
 
-              <Box sx={{ p: 3, pt: 2 }}>
+              <Box sx={{ p: { xs: 2, md: 3 }, pt: 2, flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <Box
                   sx={{
                     display: "grid",
                     gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
-                    gap: 3,
+                    gap: { xs: 2, md: 3 },
                     alignItems: "start",
+                    flex: 1
                   }}
                 >
                   <Box>
-                    <Box sx={{ mb: 2, display: "flex", flexWrap: "wrap", gap: 1 }}>
-                      {p.tags.map((t) => (
+                    <Box sx={{ mb: { xs: 1.5, md: 2 }, display: "flex", flexWrap: "wrap", gap: { xs: 0.75, md: 1 } }}>
+                      {p.tags.map((t, i) => (
                         <Chip
                           key={t}
                           label={t}
                           size="small"
                           variant="outlined"
+                          style={{
+                            animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both`
+                          }}
                           sx={{
-                            fontSize: "0.8rem",
+                            fontSize: { xs: "0.7rem", md: "0.8rem" },
                             borderRadius: "16px",
                             borderColor: "#8fbfa3",
                             color: "#5b8165",
                             backgroundColor: "rgba(143,191,163,0.1)",
+                            height: { xs: 24, md: 28 },
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            '&:hover': {
+                              transform: 'translateY(-2px) scale(1.1)',
+                              backgroundColor: 'rgba(143, 191, 163, 0.2)',
+                              borderColor: '#5b8165',
+                              boxShadow: '0 4px 12px rgba(91, 129, 101, 0.2)'
+                            }
                           }}
                         />
                       ))}
@@ -385,7 +457,7 @@ export default function Projects() {
                       sx={{
                         lineHeight: 1.6,
                         color: "#333",
-                        fontSize: "1.08rem",
+                        fontSize: { xs: "0.9rem", md: "1.08rem" },
                         fontFamily:
                           '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
                         textAlign: "left",
@@ -404,15 +476,40 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             variant="contained"
                             size="medium"
-                            startIcon={action.icon ?? undefined}
+                            startIcon={action.icon ? <Box sx={{ fontSize: { xs: 16, md: 20 } }}>{action.icon}</Box> : undefined}
                             sx={{
                               textTransform: "none",
                               fontWeight: 600,
                               borderRadius: "999px",
-                              px: 2.5,
+                              px: { xs: 1.5, md: 2.5 },
+                              py: { xs: 0.75, md: 1 },
+                              fontSize: { xs: "0.75rem", md: "0.875rem" },
                               background:
                                 "linear-gradient(135deg, #8fbfa3 0%, #5b8165 100%)",
-                              "&:hover": { filter: "brightness(0.95)" },
+                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                              position: 'relative',
+                              overflow: 'hidden',
+                              '&::before': {
+                                content: '""',
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                width: 0,
+                                height: 0,
+                                borderRadius: '50%',
+                                background: 'rgba(255, 255, 255, 0.3)',
+                                transform: 'translate(-50%, -50%)',
+                                transition: 'width 0.6s, height 0.6s'
+                              },
+                              "&:hover": { 
+                                filter: "brightness(1.1)",
+                                transform: 'translateY(-2px) scale(1.05)',
+                                boxShadow: '0 8px 20px rgba(91, 129, 101, 0.4)',
+                                '&::before': {
+                                  width: '300px',
+                                  height: '300px'
+                                }
+                              },
                             }}
                           >
                             {action.label}
@@ -424,7 +521,7 @@ export default function Projects() {
 
                   <Box
                     sx={{
-                      p: 2,
+                      p: { xs: 1.5, md: 2 },
                       backgroundColor: "#f8f9ff",
                       borderRadius: "16px",
                       border: "1px solid #e8eaff",
