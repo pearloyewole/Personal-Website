@@ -147,7 +147,7 @@ function Experience() {
             fontFamily: '"Newsreader", serif',
             fontWeight: 400,
             fontSize: { xs: '2rem', md: '3rem' },
-            color: '#5b8165',
+            color: '#000000ff',
             mb: 2
           }}>
             Experience
@@ -349,7 +349,7 @@ function Experience() {
                 {/* Description Column */}
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '0.875rem', md: '0.9rem' } }}>
-                    🛠️ Tools & Technologies
+                    Tools & Technologies
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 1.5 }, mb: { xs: 2, md: 3 } }}>
                     {experience.tools.map((tool, i) => (

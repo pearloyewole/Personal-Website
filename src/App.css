@@ -327,13 +327,3 @@ h3 {
   transform: translateY(-1px);
   box-shadow: 0 8px 25px rgba(143, 191, 163, 0.3);
 }
-
-.avatar-hint {
-  font-family: "Newsreader", serif;
-  font-size: 1rem;
-  color: #8fbfa3;
-  font-style: italic;
-  margin: 0;
-  opacity: 0.8;
-  animation: fadeInUp 1s ease-out 2s both;
-}

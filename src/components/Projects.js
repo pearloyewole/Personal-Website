@@ -237,7 +237,7 @@ export default function Projects() {
                   fontFamily: '"Newsreader", serif',
                   fontWeight: 400,
                   fontSize: { xs: "2rem", md: "3rem" },
-                  color: "#5b8165",
+                  color: "#000000ff",
                   mb: 2,
                 }}
               >
