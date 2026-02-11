@@ -17,7 +17,6 @@ import { LocationOn, CalendarToday, Download, OpenInNew } from '@mui/icons-mater
 // Import images
 import fsriPoster from '../assets/fsriposter.png';
 import seesPoster from '../assets/seesposter.png';
-import yukonImage from '../assets/yukon.png';
 
 function Experience() {
   const [imageErrors, setImageErrors] = useState({});
@@ -509,4 +508,3 @@ function Experience() {
 }
 
 export default Experience;
-
