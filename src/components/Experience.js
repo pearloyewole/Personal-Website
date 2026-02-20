@@ -53,9 +53,9 @@ function Experience() {
     {
       id: 1,
       company: "Data to Discovery + NASA Jet Propulsion Laboratory",
-      title: "Data Visualization Developer",
+      title: "Data Visualization Tool Lead Developer",
       date: "March 2025 - Present",
-      tools: ["D3.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
+      tools: ["Python", "Matlab", "P5.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
       description: "Designing and developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Creating intuitive user interfaces and interactive visualizations that enable researchers to explore complex scientific data. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to design and deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
       location: "Pasadena, CA",
       type: "Research",
@@ -63,7 +63,6 @@ function Experience() {
       hasImage: true,
       link: "https://datavis.caltech.edu/",
       linkText: "Learn More About Data to Discovery",
-      bottomButtonText: "Try out the software (coming 2026 spring)"
     },
     {
       id: 2,
@@ -82,7 +81,7 @@ function Experience() {
     {
       id: 3,
       company: "NASA & University of Texas Center for Space Research",
-      title: "Research Intern",
+      title: "SEES Research Intern",
       date: "June 2023 - August 2023",
       tools: ["GMTSAR", "Alaska Data", "Python", "NumPy", "Matplotlib", "MATLAB"],
       description: "I conducted this research as 1 of the top 95 students out of 2000 applicants to the STEM Enhancement in Earth Science (SEES) internship program at NASA and the University of Texas Center for Space Research. I utilized MATLAB, Python libraries (NumPy, Matplotlib), and geophysical data processing techniques to create interferograms (images of surface deformation) and analyze satellite data under the guidance of UT Austin assistant professor Dr. Jinyi (Ann) Chen. Presented research poster and abstract at the 2023 American Geophysical Union Fall Meeting Bright Stars Poster Session.",
@@ -100,7 +99,8 @@ function Experience() {
       description: "I developed and programmed innovative computing-infused curriculum and software tools (games, simulations, tutorials, etc.) that was utilized by over 200 K-12 teachers participating in the Game2Learn Lab Research Experience for Teachers (RET). I specifically utilized Python and block-based programming to infuse computational thinking into non-computing courses. The goal of creating these computer science infused curriculums was to improve computer science education accessibility.",
       location: "Raleigh, NC",
       type: "Research",
-      hasPoster: false
+      hasPoster: false,
+      hasImage: false, 
     }
   ];
 

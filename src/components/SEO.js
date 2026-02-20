@@ -39,11 +39,6 @@ const SEO = ({
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       
-      {/* Twitter */}
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
-      
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
     </Helmet>

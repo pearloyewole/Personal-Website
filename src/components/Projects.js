@@ -26,7 +26,6 @@ import edenPoster from '../assets/eden.png';
 import soroImage from '../assets/soro.png';
 import bsuWebsite from '../assets/bsu-website.png';
 import pcCity from '../assets/pc_city.png';
-import sortWise from '../assets/sort_wise.png';
 import flappyJoyride from '../assets/flappy_joyride.mp4';
 import flappyPoster from '../assets/flappy-joyride.png';
 
@@ -72,21 +71,6 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 
 export default function Projects() {
   const projects = [
-     {
-      id: 6,
-      title: "Eden: AI Sustainability Tracker Chrome Extension for Claude.ai",
-      org: "HackMIT 2025",
-      date: "September 2025",
-      location: "Cambridge, MA",
-      tags: ["JSON", "React", "Typescript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
-      description: "Eden is a Chrome extension for claude.ai that monitors user's AI conversations and analyzes the environmental impact, shares better prompt engineering practices, and encourages users to think about AI sustainability.", 
-      mediaType: "video",
-      mediaUrl: edenDemo,
-      poster: edenPoster,
-      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }, 
-        {label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647", icon: <Language />}
-      ],
-    },
     {
       id: 0,
       title: "Soro - Yoruba Learning App",
@@ -106,6 +90,21 @@ export default function Projects() {
           icon: <Language />,
         },
       ],
+    }, 
+     {
+      id: 6,
+      title: "Eden: AI Sustainability Tracker Chrome Extension for Claude.ai",
+      org: "HackMIT 2025",
+      date: "September 2025",
+      location: "Cambridge, MA",
+      tags: ["JSON", "React", "Typescript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
+      description: "Eden is a Chrome extension for claude.ai that monitors user's AI conversations and analyzes the environmental impact, shares better prompt engineering practices, and encourages users to think about AI sustainability.", 
+      mediaType: "video",
+      mediaUrl: edenDemo,
+      poster: edenPoster,
+      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }, 
+        {label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647", icon: <Language />}
+      ],
     },
     {
       id: 1,
@@ -119,7 +118,7 @@ export default function Projects() {
       mediaType: "image",
       mediaUrl: bsuWebsite,
       poster: "",
-      cta: [{ label: "View Site", href: "https://caltech-bsu.vercel.app/", icon: <Language /> }],
+      cta: [{ label: "View Site", href: "https://caltechbsu.org", icon: <Language /> }],
     },
     {
       id: 2,
@@ -139,22 +138,6 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "SortWise",
-      org: "Hackathon Project",
-      date: "July 2025",
-      location: "Remote",
-      tags: ["React.js", "Vite.js", "HTML/CSS", "Python,", "Tensorflow", "Scikit-learn", "Pandas", "Jupyter Notebook", "Git", "FastAPI", "Figma"],
-      description:
-        "SortWise is a web application that uses a 90% accurate custom-trained machine learning model built with TensorFlow to classify images of waste into categories like plastic, paper, or metal. Built with React and connected to a FastAPI backend, it guides users on how to dispose of trash responsibly.",
-      mediaType: "image",
-      mediaUrl: sortWise,
-      cta: [
-        { label: "Try it out", href: "https://sort-wise.vercel.app/", icon: <PlayCircle /> },
-        { label: "GitHub", href: "https://github.com/pearloyewole/SortWise", icon: <Code /> },
-      ],
-    },
-    {
-      id: 4,
       title: "Flappy Joyride: Physics Engine Game",
       org: "Introduction to Software Design (CS 3) Final Project",
       date: "June 2025",

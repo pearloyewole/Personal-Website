@@ -22,7 +22,7 @@ function Node({ position, label, type, color, onClick, isHovered }) {
 
   const nodeColor = hover || isHovered ? '#cbe9d8' : color;
   const size = type === 'project' ? 0.4 : 0.25;
-  const textColor = '#5b8165'; // Darker green for better readability
+  const textColor = 'rgb(47, 53, 49)'; 
 
   return (
     <group position={position} ref={meshRef}>
@@ -44,14 +44,12 @@ function Node({ position, label, type, color, onClick, isHovered }) {
         />
       </Sphere>
       <Text
-        position={[0, size + 0.3, 0]}
+        position={[0, size+0.3, 0]}
         fontSize={0.12}
         color={textColor}
         anchorX="center"
         anchorY="middle"
-        maxWidth={2.5}
-        outlineWidth={0.02}
-        outlineColor="#ffffff"
+        maxWidth={5.5}
         outlineOpacity={0.9}
       >
         {label}
@@ -233,7 +231,7 @@ export default function ProjectNodeMap({ projects, onNodeClick, embedded = false
             <Scene projects={projects} onNodeClick={onNodeClick} />
           </Canvas>
           <div className="node-map-hint">
-            <p>hey! drag me around :)) • click project nodes to explore</p>
+            <p>drag me around • click project nodes to explore</p>
           </div>
         </div>
       </div>
