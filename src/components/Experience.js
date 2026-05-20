@@ -54,7 +54,7 @@ function Experience() {
       id: 1,
       company: "Data to Discovery + NASA Jet Propulsion Laboratory",
       title: "Data Visualization Tool Lead Developer",
-      date: "March 2025 - Present",
+      date: "September 2025 - June 2026",
       tools: ["Python", "Matlab", "P5.js", "Three.js", "React", "WebGL", "HCI", "Data Visualization"],
       description: "Designing and developing full-stack data visualization software to handle large 3D ADCP and satellite datasets. Creating intuitive user interfaces and interactive visualizations that enable researchers to explore complex scientific data. Implementing backend and computation pipelines to support dataset uploads, cross-section extraction, and fluid shear stress calculations, optimizing performance for interactive exploration. Collaborating with researchers to design and deliver a scientific tool that visualizes river systems in 3D, link hydrodynamic forces to erosion patterns, and generate new insights from Alaskan river datasets.",
       location: "Pasadena, CA",
@@ -119,7 +119,7 @@ function Experience() {
   const experiencesToShow = activeTab === 0 ? allExperiences : activeTab === 1 ? industryExperiences : researchExperiences;
 
   return (
-    <main className="experience" sx={{ 
+    <Box component="main" className="experience" sx={{ 
       p: { xs: 2, md: 4 }, 
       pt: { xs: 4, md: 6 },
       backgroundColor: '#fefefe', 
@@ -203,19 +203,23 @@ function Experience() {
           maxWidth: 1400, 
           mx: 'auto', 
           px: { xs: 1, md: 2 },
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-          gap: { xs: 2, md: 4 }
+          columnCount: { xs: 1, md: 2 },
+          columnGap: { xs: '0px', md: '24px' }
         }}>
-          {experiencesToShow.map((experience, index) => (
+          {experiencesToShow.map((experience, index) => {
+            const hasVisual = experience.hasPoster || experience.hasImage;
+            return (
             <article 
               key={`${experience.category}-${experience.id}`}
               style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
+                breakInside: 'avoid',
+                WebkitColumnBreakInside: 'avoid',
+                marginBottom: '24px'
               }}
             >
               <Card sx={{ 
-                height: '100%',
+                height: 'auto',
                 borderRadius: '20px', 
                 boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(255,255,255,0.2)',
@@ -287,7 +291,7 @@ function Experience() {
                       href={experience.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ textDecoration: 'none', alignSelf: { xs: 'flex-start', sm: 'flex-start' } }}
+                      style={{ textDecoration: 'none', alignSelf: 'flex-start' }}
                     >
                       <Box sx={{
                         px: { xs: 2, md: 2.5 },
@@ -340,13 +344,12 @@ function Experience() {
               <Box sx={{ 
                 p: { xs: 2, md: 3 }, 
                 pt: 2,
-                flex: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: { xs: 2, md: 4 }
               }}>
                 {/* Description Column */}
-                <Box sx={{ flex: 1 }}>
+                <Box sx={{ flex: hasVisual ? 1 : 'unset' }}>
                   <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '0.875rem', md: '0.9rem' } }}>
                     Tools & Technologies
                   </Typography>
@@ -384,7 +387,7 @@ function Experience() {
                 </Box>
 
                 {/* Image/Poster Column */}
-                {(experience.hasPoster || experience.hasImage) && (
+                {hasVisual && (
                   <Box sx={{ 
                     p: { xs: 1.5, md: 2 }, 
                     backgroundColor: '#f8f9ff', 
@@ -500,10 +503,11 @@ function Experience() {
             </CardContent>
               </Card>
             </article>
-          ))}
+            );
+          })}
         </Box>
       </section>
-    </main>
+    </Box>
   );
 }
 

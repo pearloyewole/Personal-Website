@@ -34,22 +34,49 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
   if (mediaType === "image") {
     return (
       <Box
-        component="img"
-        src={mediaUrl}
-        alt={alt}
-        sx={{ width: "100%", height: { xs: 200, sm: 250, md: 300 }, objectFit: "cover", borderRadius: 2 }}
-      />
+        sx={{
+          width: "100%",
+          aspectRatio: { xs: "4 / 3", md: "16 / 10" },
+          borderRadius: 2,
+          overflow: "hidden",
+          backgroundColor: "#eef3ef",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          component="img"
+          src={mediaUrl}
+          alt={alt}
+          sx={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+        />
+      </Box>
     );
   }
   if (mediaType === "video") {
     return (
       <Box
-        component="video"
-        src={mediaUrl}
-        poster={poster}
-        controls
-        sx={{ width: "100%", height: { xs: 200, sm: 250, md: 300 }, borderRadius: 2, backgroundColor: "#000", objectFit: "cover" }}
-      />
+        sx={{
+          width: "100%",
+          aspectRatio: { xs: "4 / 3", md: "16 / 10" },
+          borderRadius: 2,
+          overflow: "hidden",
+          backgroundColor: "#101614",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          component="video"
+          src={mediaUrl}
+          poster={poster}
+          controls
+          preload="metadata"
+          sx={{ width: "100%", height: "100%", objectFit: "contain", display: "block", backgroundColor: "#101614" }}
+        />
+      </Box>
     );
   }
   if (mediaType === "embed") {
@@ -71,6 +98,25 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 
 export default function Projects() {
   const projects = [
+    {
+      id: 7,
+      title: "Yukon - River Analysis and Visualization Platform",
+      org: "Data Visualization Project",
+      date: "2026 - Present",
+      location: "Remote",
+      tags: ["JavaScript", "Vite", "p5.js", "Three.js", "GIS Raster Data (GeoTIFF/JSON)", "Git", "Vercel"],
+      description:
+        "Built and deployed an interactive web platform for river cross-section analysis with preloaded Huslia, Alakanuk, and Beaver datasets, including terrain and vegetation layer toggles, saved measurement views, and export-ready analysis workflows.",
+      mediaType: "image",
+      mediaUrl: "/yukon-screenshot.png",
+      cta: [
+        {
+          label: "Open Demo",
+          href: "https://yukon-ten.vercel.app/log-analysis.html?mode=demo&river=beaver",
+          icon: <Language />,
+        },
+      ],
+    },
     {
       id: 0,
       title: "Soro - Yoruba Learning App",
@@ -276,6 +322,7 @@ export default function Projects() {
         px: { xs: 1, md: 2 },
         display: 'grid',
         gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+        alignItems: 'start',
         gap: { xs: 2, md: 4 }
       }}>
         {projects.map((p, index) => (
@@ -286,7 +333,7 @@ export default function Projects() {
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
             }}
             sx={{
-              height: '100%',
+              height: 'auto',
               borderRadius: "20px",
               boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
               border: "1px solid rgba(255,255,255,0.2)",
