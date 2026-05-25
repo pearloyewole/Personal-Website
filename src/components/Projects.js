@@ -143,9 +143,15 @@ export default function Projects() {
       ],
       description:
         "Your Future Block - HackTech 2026 Project. Your Future Block is an interactive climate-risk visualizer that helps people understand how climate hazards may affect their own communities over time. Instead of presenting climate change through abstract statistics, long reports, or difficult-to-read maps, Your Future Block lets users enter an address and explore projected climate risks around that block through a clear, visual, and local interface.",
-      mediaType: "video",
-      mediaUrl: "/yourfutureblock.mov",
-      poster: "/yourfutureblock.png",
+      mediaType: "image",
+      mediaUrl: "/yourfutureblock.png",
+      cta: [
+        {
+          label: "Pitch Deck",
+          href: "https://canva.link/7diuta24ax8o7l1",
+          icon: <Language />,
+        },
+      ],
     },
     {
       id: 0,
