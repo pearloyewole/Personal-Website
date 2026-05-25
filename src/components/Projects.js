@@ -10,7 +10,6 @@ import {
   Divider,
   Paper,
   Button,
-  Stack,
 } from "@mui/material";
 import {
   CalendarToday,
@@ -103,7 +102,7 @@ export default function Projects() {
       title: "Yukon - River Analysis and Visualization Platform",
       org: "Data Visualization Project",
       date: "2026 - Present",
-      location: "Remote",
+      location: "Pasadena, CA",
       tags: ["JavaScript", "Vite", "p5.js", "Three.js", "GIS Raster Data (GeoTIFF/JSON)", "Git", "Vercel"],
       description:
         "Built and deployed an interactive web platform for river cross-section analysis with preloaded Huslia, Alakanuk, and Beaver datasets, including terrain and vegetation layer toggles, saved measurement views, and export-ready analysis workflows.",
@@ -116,6 +115,37 @@ export default function Projects() {
           icon: <Language />,
         },
       ],
+    },
+    {
+      id: 8,
+      title: "Your Future Block - HackTech 2026 Project",
+      org: "HackTech 2026",
+      date: "2026 - Present",
+      location: "Pasadena, CA",
+      tags: [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "React Router",
+        "Leaflet",
+        "React Leaflet",
+        "MapLibre GL JS",
+        "Lucide React",
+        "Node.js",
+        "npm",
+        "OpenStreetMap tiles",
+        "Vercel",
+        "Fly.io",
+        "Git",
+        "Census Geocoder API",
+        "FastAPI/Python (backend path)",
+      ],
+      description:
+        "Your Future Block - HackTech 2026 Project. Your Future Block is an interactive climate-risk visualizer that helps people understand how climate hazards may affect their own communities over time. Instead of presenting climate change through abstract statistics, long reports, or difficult-to-read maps, Your Future Block lets users enter an address and explore projected climate risks around that block through a clear, visual, and local interface.",
+      mediaType: "video",
+      mediaUrl: "/yourfutureblock.mov",
+      poster: "/yourfutureblock.png",
     },
     {
       id: 0,
@@ -217,8 +247,8 @@ export default function Projects() {
           textAlign: "left",
           backgroundColor: "white",
           borderRadius: "24px",
-          boxShadow: "none",
-          border: "none",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+          border: "1px solid rgba(255,255,255,0.2)",
           backdropFilter: "blur(10px)",
           position: "relative",
           overflow: "hidden",
@@ -320,164 +350,153 @@ export default function Projects() {
         maxWidth: 1400, 
         mx: "auto", 
         px: { xs: 1, md: 2 },
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-        alignItems: 'start',
-        gap: { xs: 2, md: 4 }
+        columnCount: { xs: 1, md: 2 },
+        columnGap: { xs: "0px", md: "24px" },
       }}>
         {projects.map((p, index) => (
-          <Card
+          <article
             key={p.id}
             id={`project-${p.id}`}
             style={{
-              animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
-            }}
-            sx={{
-              height: 'auto',
-              borderRadius: "20px",
-              boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              overflow: "hidden",
-              transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-              display: 'flex',
-              flexDirection: 'column',
-              position: 'relative',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(135deg, rgba(143, 191, 163, 0.05) 0%, rgba(91, 129, 101, 0.05) 100%)',
-                opacity: 0,
-                transition: 'opacity 0.4s ease',
-                zIndex: 0
-              },
-              "&:hover": {
-                transform: "translateY(-8px) scale(1.02)",
-                boxShadow: "0 25px 70px rgba(91, 129, 101, 0.2)",
-                '&::before': {
-                  opacity: 1
-                }
-              },
-              "&:hover .project-content": {
-                transform: "translateY(-2px)"
-              }
+              animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
+              breakInside: "avoid",
+              WebkitColumnBreakInside: "avoid",
+              marginBottom: "24px",
             }}
           >
-            <CardContent sx={{ p: 0, position: 'relative', zIndex: 1 }} className="project-content">
-              <Box sx={{ p: { xs: 2, md: 3 }, pb: 2 }}>
-                <Box sx={{ display: "flex", alignItems: "flex-start", mb: 2 }}>
-                  <Box sx={{ flex: 1 }}>
-                    <Typography
-                      variant="h6"
-                      component="h2"
-                      gutterBottom
-                      sx={{
-                        fontFamily:
-                          '"Inter","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
-                        fontWeight: 600,
-                        fontSize: { xs: "1.2rem", md: "1.5rem" },
-                        color: "#5b8165",
-                        textAlign: "left",
-                      }}
-                    >
-                      {p.title}
-                    </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        color: "#8fbfa3",
-                        fontWeight: 500,
-                        mb: 1,
-                        fontFamily:
-                          '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
-                        fontSize: { xs: "0.95rem", md: "1.05rem" },
-                        textAlign: "left",
-                      }}
-                    >
-                      {p.org}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: { xs: 1, md: 2 },
-                        mb: 1,
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Card
+              sx={{
+                height: "auto",
+                borderRadius: "20px",
+                boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                overflow: "hidden",
+                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                display: "flex",
+                flexDirection: "column",
+                position: "relative",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: "linear-gradient(135deg, rgba(143, 191, 163, 0.05) 0%, rgba(91, 129, 101, 0.05) 100%)",
+                  opacity: 0,
+                  transition: "opacity 0.4s ease",
+                  zIndex: 0,
+                },
+                "&:hover": {
+                  transform: "translateY(-8px) scale(1.02)",
+                  boxShadow: "0 25px 70px rgba(91, 129, 101, 0.2)",
+                  "&::before": {
+                    opacity: 1,
+                  },
+                },
+                "&:hover .project-content": {
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              <CardContent sx={{ p: 0, position: "relative", zIndex: 1 }} className="project-content">
+                <Box sx={{ p: { xs: 2, md: 3 }, pb: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" }, alignItems: "flex-start", gap: { xs: 1, sm: 0 } }}>
+                    <Box sx={{ flex: 1, width: "100%" }}>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        gutterBottom
+                        sx={{
+                          fontWeight: 600,
+                          fontSize: { xs: "1.2rem", md: "1.5rem" },
+                          color: "#5b8165",
+                          textAlign: "left",
+                        }}
+                      >
+                        {p.title}
+                      </Typography>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          color: "#8fbfa3",
+                          fontWeight: 500,
+                          mb: 1,
+                          fontSize: { xs: "0.95rem", md: "1.05rem" },
+                          textAlign: "left",
+                        }}
+                      >
+                        {p.org}
+                      </Typography>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1, md: 2 }, mb: 1, flexWrap: "wrap" }}>
                         <CalendarToday sx={{ fontSize: { xs: 14, md: 16 }, color: "#8fbfa3" }} />
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontSize: { xs: "0.8rem", md: "0.9rem" },
-                            fontFamily: '"Sometype Mono", monospace',
-                            color: "#666",
-                            textAlign: "left",
-                          }}
-                        >
+                        <Typography variant="body2" sx={{ fontSize: { xs: "0.8rem", md: "0.9rem" }, color: "#666" }}>
                           {p.date}
                         </Typography>
-                      </Box>
-                      <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
                         <LocationOn sx={{ fontSize: { xs: 14, md: 16 }, color: "#5b8165" }} />
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            fontSize: { xs: "0.8rem", md: "0.9rem" },
-                            fontFamily: '"Sometype Mono", monospace',
-                            color: "#666",
-                            textAlign: "left",
-                          }}
-                        >
+                        <Typography variant="body2" sx={{ fontSize: { xs: "0.8rem", md: "0.9rem" }, color: "#666" }}>
                           {p.location}
                         </Typography>
                       </Box>
                     </Box>
+
+                    {Array.isArray(p.cta) && p.cta.length > 0 && (
+                      <a href={p.cta[0].href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", alignSelf: "flex-start" }}>
+                        <Box
+                          sx={{
+                            px: { xs: 2, md: 2.5 },
+                            py: { xs: 0.75, md: 1 },
+                            backgroundColor: "#8fbfa3",
+                            color: "white",
+                            borderRadius: "16px",
+                            fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                            fontSize: { xs: "0.75rem", md: "0.8rem" },
+                            fontWeight: 500,
+                            cursor: "pointer",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            "&:hover": {
+                              backgroundColor: "#a5b780",
+                              transform: "translateY(-3px) scale(1.05)",
+                              boxShadow: "0 8px 20px rgba(91, 129, 101, 0.4)",
+                            },
+                            whiteSpace: "nowrap",
+                            mt: { xs: 1, sm: 0 },
+                          }}
+                        >
+                          {p.cta[0].label} →
+                        </Box>
+                      </a>
+                    )}
                   </Box>
                 </Box>
-              </Box>
 
-              <Divider sx={{ mx: 3, opacity: 0.3 }} />
+                <Divider sx={{ mx: 3, opacity: 0.3 }} />
 
-              <Box sx={{ p: { xs: 2, md: 3 }, pt: 2, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <Box
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
-                    gap: { xs: 2, md: 3 },
-                    alignItems: "start",
-                    flex: 1
-                  }}
-                >
+                <Box sx={{ p: { xs: 2, md: 3 }, pt: 2, display: "flex", flexDirection: "column", gap: { xs: 2, md: 4 } }}>
                   <Box>
-                    <Box sx={{ mb: { xs: 1.5, md: 2 }, display: "flex", flexWrap: "wrap", gap: { xs: 0.75, md: 1 } }}>
+                    <Typography variant="body2" sx={{ mb: 1.5, color: "#666", fontSize: { xs: "0.875rem", md: "0.9rem" } }}>
+                      Tools & Technologies
+                    </Typography>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: { xs: 1, md: 1.5 }, mb: { xs: 2, md: 3 } }}>
                       {p.tags.map((t, i) => (
                         <Chip
-                          key={t}
+                          key={`${p.id}-${t}-${i}`}
                           label={t}
                           size="small"
                           variant="outlined"
-                          style={{
-                            animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both`
-                          }}
+                          style={{ animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both` }}
                           sx={{
-                            fontSize: { xs: "0.7rem", md: "0.8rem" },
-                            borderRadius: "16px",
+                            fontSize: { xs: "0.7rem", md: "0.75rem" },
                             borderColor: "#8fbfa3",
                             color: "#5b8165",
-                            backgroundColor: "rgba(143,191,163,0.1)",
                             height: { xs: 24, md: 28 },
-                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            '&:hover': {
-                              transform: 'translateY(-2px) scale(1.1)',
-                              backgroundColor: 'rgba(143, 191, 163, 0.2)',
-                              borderColor: '#5b8165',
-                              boxShadow: '0 4px 12px rgba(91, 129, 101, 0.2)'
-                            }
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            "&:hover": {
+                              transform: "translateY(-2px) scale(1.1)",
+                              backgroundColor: "rgba(143, 191, 163, 0.1)",
+                              borderColor: "#5b8165",
+                              boxShadow: "0 4px 12px rgba(91, 129, 101, 0.2)",
+                            },
                           }}
                         />
                       ))}
@@ -487,87 +506,49 @@ export default function Projects() {
                       sx={{
                         lineHeight: 1.6,
                         color: "#333",
-                        fontSize: { xs: "0.9rem", md: "1.08rem" },
-                        fontFamily:
-                          '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+                        fontSize: { xs: "0.9rem", md: "1rem" },
                         textAlign: "left",
                       }}
                     >
                       {p.description}
                     </Typography>
+                  </Box>
 
-                    {Array.isArray(p.cta) && p.cta.length > 0 && (
-                      <Stack direction="row" spacing={1.5} sx={{ mt: 2, flexWrap: "wrap" }}>
-                        {p.cta.map((action, i) => (
+                  <Box sx={{ p: { xs: 1.5, md: 2 }, backgroundColor: "#f8f9ff", borderRadius: "16px", border: "1px solid #e8eaff" }}>
+                    <Media mediaType={p.mediaType} mediaUrl={p.mediaUrl} poster={p.poster} alt={p.title} />
+                    {Array.isArray(p.cta) && p.cta.length > 1 && (
+                      <Box
+                        sx={{
+                          mt: 2,
+                          pt: 2,
+                          borderTop: "1px solid #e0e0e0",
+                          display: "flex",
+                          gap: { xs: 1, md: 1.5 },
+                          justifyContent: "center",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        {p.cta.slice(1).map((action, i) => (
                           <Button
-                            key={i}
+                            key={`${p.id}-extra-cta-${i}`}
                             href={action.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            variant="contained"
-                            size="medium"
-                            startIcon={action.icon ? <Box sx={{ fontSize: { xs: 16, md: 20 } }}>{action.icon}</Box> : undefined}
-                            sx={{
-                              textTransform: "none",
-                              fontWeight: 600,
-                              borderRadius: "999px",
-                              px: { xs: 1.5, md: 2.5 },
-                              py: { xs: 0.75, md: 1 },
-                              fontSize: { xs: "0.75rem", md: "0.875rem" },
-                              background:
-                                "linear-gradient(135deg, #8fbfa3 0%, #5b8165 100%)",
-                              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                              position: 'relative',
-                              overflow: 'hidden',
-                              '&::before': {
-                                content: '""',
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                width: 0,
-                                height: 0,
-                                borderRadius: '50%',
-                                background: 'rgba(255, 255, 255, 0.3)',
-                                transform: 'translate(-50%, -50%)',
-                                transition: 'width 0.6s, height 0.6s'
-                              },
-                              "&:hover": { 
-                                filter: "brightness(1.1)",
-                                transform: 'translateY(-2px) scale(1.05)',
-                                boxShadow: '0 8px 20px rgba(91, 129, 101, 0.4)',
-                                '&::before': {
-                                  width: '300px',
-                                  height: '300px'
-                                }
-                              },
-                            }}
+                            variant="outlined"
+                            size="small"
+                            startIcon={action.icon}
+                            sx={{ borderColor: "#8fbfa3", color: "#5b8165", textTransform: "none", borderRadius: "999px" }}
                           >
                             {action.label}
                           </Button>
                         ))}
-                      </Stack>
+                      </Box>
                     )}
                   </Box>
-
-                  <Box
-                    sx={{
-                      p: { xs: 1.5, md: 2 },
-                      backgroundColor: "#f8f9ff",
-                      borderRadius: "16px",
-                      border: "1px solid #e8eaff",
-                    }}
-                  >
-                    <Media
-                      mediaType={p.mediaType}
-                      mediaUrl={p.mediaUrl}
-                      poster={p.poster}
-                      alt={p.title}
-                    />
-                  </Box>
                 </Box>
-              </Box>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </article>
         ))}
       </Box>
     </Box>
