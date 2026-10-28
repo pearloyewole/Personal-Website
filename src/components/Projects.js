@@ -98,10 +98,25 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 export default function Projects() {
   const projects = [
     {
+      id: 9,
+      title: "Memory and Energy Efficiency in Neural Networks",
+      org: "Biology Through the Algorithmic Lens (Bi 1C), Caltech",
+      date: "May 2026",
+      location: "Pasadena, CA",
+      tags: ["Python", "PyTorch", "NumPy", "pandas", "Matplotlib", "CodeCarbon", "Google Colab"],
+      description:
+        "Compared a gated recurrent unit (GRU) with a simplified Hebbian-style memory baseline on a delayed copy task. Evaluated recall accuracy, runtime, and energy use across increasing delays using CodeCarbon and operation-based estimates. Explored how memory mechanisms affect performance and why theoretical computational efficiency can differ from energy use in practice.",
+      mediaType: "image",
+      mediaUrl: "/bi-1c-report-preview.png",
+      cta: [
+        { label: "Read Report", href: "/Bi_1c_Final_Report.pdf", icon: <Language /> },
+      ],
+    },
+    {
       id: 7,
       title: "Yukon - River Analysis and Visualization Platform",
       org: "Data Visualization Project",
-      date: "2026 - Present",
+      date: "May 2026",
       location: "Pasadena, CA",
       tags: ["JavaScript", "Vite", "p5.js", "Three.js", "GIS Raster Data (GeoTIFF/JSON)", "Git", "Vercel"],
       description:
@@ -117,10 +132,10 @@ export default function Projects() {
       ],
     },
     {
-      id: 8,
+      id: 6,
       title: "Your Future Block - HackTech 2026 Project",
       org: "HackTech 2026",
-      date: "2026 - Present",
+      date: "April 2026",
       location: "Pasadena, CA",
       tags: [
         "React",
@@ -154,10 +169,10 @@ export default function Projects() {
       ],
     },
     {
-      id: 0,
+      id: 8,
       title: "Soro - Yoruba Learning App",
       org: "Solo Developer",
-      date: "Present",
+      date: "September 2025",
       location: "Houston, TX",
       tags: ["XCode, React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
       description:
@@ -192,7 +207,7 @@ export default function Projects() {
       id: 1,
       title: "Caltech BSU Website",
       org: "California Institute of Technology",
-      date: "Present",
+      date: "September 2025",
       location: "Pasadena, CA",
       tags: ["React.js", "Next.js", "Typescript", "HTML/CSS", "Supabase", "SMTP", "SQL", "Git", "Figma"],
       description:
