@@ -368,11 +368,12 @@ export default function Projects() {
       </Paper>
 
       <Box sx={{ 
-        maxWidth: 1400, 
         mx: "auto", 
         px: { xs: 1, md: 2 },
-        columnCount: { xs: 1, md: 2 },
-        columnGap: { xs: "0px", md: "24px" },
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
+        gap: "24px",
+        alignItems: "start",
       }}>
         {projects.map((p, index) => (
           <article
@@ -380,9 +381,7 @@ export default function Projects() {
             id={`project-${p.id}`}
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              breakInside: "avoid",
-              WebkitColumnBreakInside: "avoid",
-              marginBottom: "24px",
+              minWidth: 0,
             }}
           >
             <Card

@@ -39,7 +39,7 @@ function Experience() {
     } 
       ,
            { 
-      id: 2,
+      id: 1,
       company: "Virtu Financial",
       title: "Quantative Trading Wintern",
       date: "January 2026",
@@ -127,10 +127,27 @@ function Experience() {
     }
   ];
 
+  const featuredOrder = [
+    'Duolingo',
+    'Virtu Financial',
+    'CrowdStrike',
+    'Data to Discovery + NASA Jet Propulsion Laboratory'
+  ];
+
   const allExperiences = [
     ...industryExperiences.map(exp => ({ ...exp, category: 'Industry' })),
     ...researchExperiences.map(exp => ({ ...exp, category: 'Research' }))
-  ].sort((a, b) => a.id - b.id);
+  ].sort((a, b) => {
+    const aRank = featuredOrder.indexOf(a.company);
+    const bRank = featuredOrder.indexOf(b.company);
+    const priorityDifference = (aRank === -1 ? featuredOrder.length : aRank)
+      - (bRank === -1 ? featuredOrder.length : bRank);
+    if (priorityDifference !== 0) return priorityDifference;
+    if (a.category !== b.category) {
+      return a.category === 'Industry' ? -1 : 1;
+    }
+    return a.id - b.id;
+  });
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -222,11 +239,12 @@ function Experience() {
       {/* Experience Feed */}
       <section aria-label="Experience">
         <Box sx={{ 
-          maxWidth: 1400, 
           mx: 'auto', 
           px: { xs: 1, md: 2 },
-          columnCount: { xs: 1, md: 2 },
-          columnGap: { xs: '0px', md: '24px' }
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+          gap: '24px',
+          alignItems: 'start'
         }}>
           {experiencesToShow.map((experience, index) => {
             const hasVisual = experience.hasPoster || experience.hasImage;
@@ -235,9 +253,7 @@ function Experience() {
               key={`${experience.category}-${experience.id}`}
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-                breakInside: 'avoid',
-                WebkitColumnBreakInside: 'avoid',
-                marginBottom: '24px'
+                minWidth: 0
               }}
             >
               <Card sx={{ 
