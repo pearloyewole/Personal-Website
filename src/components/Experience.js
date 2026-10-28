@@ -28,7 +28,7 @@ function Experience() {
       id: 0,
       company: "Duolingo",
       title: "Software Engineering Intern ",
-      date: "October 2025 - Present",
+      date: "June 2026 - August 2026",
       tools: ["Python", "Flask", "DynamoDB", "Swift", "XCode", "Figma"],
       description: "Architected mental-math learning mini-game using Swift, MVVM, Flask, and DynamoDB, designed to scale to 7M projected users..Built REST APIs, data access layers, managers, business logic, unit tests, and DynamoDB integrations for reliable client-server communication. Presented a SAT preparation hackathon project supported by market research demonstrating potential reach of 3M students annually to the CEO, executive leadership, and ~500 engineers",
       location: "Pittsburgh, PA",
@@ -38,10 +38,20 @@ function Experience() {
 
     } 
       ,
+           { 
+      id: 2,
+      company: "Virtu Financial",
+      title: "Quantative Trading Winter",
+      date: "January 2026",
+      tools: ["Pandas", "Python"],
+      description: "Analyzed gold futures market data using Python, pandas, and statistical techniques to identify predictive trading signals +  alpha.Developed and validated predictive models, then implemented algorithmic trading strategies on unseen simulated exchange data. Presented research findings and trading strategies to stakeholders, generating approximately $3 million in simulated profits." ,
+      location: "New York, NY",
+      type: "Industry",
+    }, 
       
       {
       
-      id: 1,
+      id: 2,
       company: "CrowdStrike",
       title: "Automation Engineering Intern",
       date: "October 2025 - Present",
@@ -51,7 +61,7 @@ function Experience() {
       type: "Industry",
     },
     {
-      id: 2,
+      id: 3,
       company: "Jane Street Capital",
       title: "Software Engineering Fellow",
       date: "June 2025 - August 2025",
