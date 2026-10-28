@@ -88,7 +88,7 @@ function Experience() {
       linkText: "Learn More About Data to Discovery",
     },
     {
-      id: 8,
+      id: 11,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
@@ -102,7 +102,7 @@ function Experience() {
       linkText: "Learn more about FSRI →"
     },
     {
-      id: 6,
+      id: 10,
       company: "NASA & University of Texas Center for Space Research",
       title: "SEES Research Intern",
       date: "June 2023 - August 2023",
