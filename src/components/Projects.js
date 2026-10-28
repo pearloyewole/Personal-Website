@@ -107,7 +107,7 @@ export default function Projects() {
       description:
         "Built and deployed an interactive web platform for river cross-section analysis with preloaded Huslia, Alakanuk, and Beaver datasets, including terrain and vegetation layer toggles, saved measurement views, and export-ready analysis workflows.",
       mediaType: "image",
-      mediaUrl: "/yukon-screenshot.png",
+      mediaUrl: "/YUKON-RIVER+CROSSECTIONS.byPEARL.png",
       cta: [
         {
           label: "Open Demo",

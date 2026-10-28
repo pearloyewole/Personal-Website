@@ -23,7 +23,24 @@ function Experience() {
   const [activeTab, setActiveTab] = useState(0);
 
   const industryExperiences = [
+
     {
+      id: 0,
+      company: "Duolingo",
+      title: "Software Engineering Intern ",
+      date: "October 2025 - Present",
+      tools: ["Python", "Flask", "DynamoDB", "Swift", "XCode", "Figma"],
+      description: "Architected mental-math learning mini-game using Swift, MVVM, Flask, and DynamoDB, designed to scale to 7M projected users..Built REST APIs, data access layers, managers, business logic, unit tests, and DynamoDB integrations for reliable client-server communication. Presented a SAT preparation hackathon project supported by market research demonstrating potential reach of 3M students annually to the CEO, executive leadership, and ~500 engineers",
+      location: "Pittsburgh, PA",
+      type: "Industry",
+      hasPoster: false, 
+      hasImage: true , 
+
+    } 
+      ,
+      
+      {
+      
       id: 1,
       company: "CrowdStrike",
       title: "Customer Success Automation Intern",
@@ -32,8 +49,6 @@ function Experience() {
       description: "Scoped and implemented automation solutions that streamlined manual workflows and resolved 70%-90% of support cases. Redesigned user interfaces for Python-based automation platforms used in customer ticket resolution, improving end-user experience and usability. Led approximately 10 UX interviews with internal stakeholders and end users, translating feedback into feature improvements and higher platform adoption.",
       location: "Remote",
       type: "Industry",
-      link: "https://www.crowdstrike.com/",
-      linkText: "Learn more about CrowdStrike →"
     },
     {
       id: 2,
@@ -44,14 +59,12 @@ function Experience() {
       description: "Selected to join a 8-week, in-person summer program with 11 other top fellows nationwide, focusing on developing with OCaml and collaborative engineering practices with full-time engineers. Developed an ETC trading bot capable of trading and converting bonds, ADRs, and ETFs given market information within a simulated exchange. Projects included implementing image manipulation, game AIs, graph traversals, web scraping, website development.",
       location: "New York, NY",
       type: "Industry",
-      link: "https://www.janestreet.com/join-jane-street/programs-and-events/jsip/",
-      linkText: "Learn more about Jane Street →"
     }
   ];
 
   const researchExperiences = [
     {
-      id: 1,
+      id: 4,
       company: "Data to Discovery + NASA Jet Propulsion Laboratory",
       title: "Data Visualization Tool Lead Developer",
       date: "September 2025 - June 2026",
@@ -65,7 +78,7 @@ function Experience() {
       linkText: "Learn More About Data to Discovery",
     },
     {
-      id: 2,
+      id: 5,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
@@ -79,7 +92,7 @@ function Experience() {
       linkText: "Learn more about FSRI →"
     },
     {
-      id: 3,
+      id: 6,
       company: "NASA & University of Texas Center for Space Research",
       title: "SEES Research Intern",
       date: "June 2023 - August 2023",
@@ -91,7 +104,7 @@ function Experience() {
       pdfLink: "/SEES Poster.pdf"
     },
     {
-      id: 4,
+      id: 7,
       company: "North Carolina State University Game2Learn Lab",
       title: "Research Intern",
       date: "June 2021 - July 2022",
@@ -107,16 +120,15 @@ function Experience() {
   const allExperiences = [
     ...industryExperiences.map(exp => ({ ...exp, category: 'Industry' })),
     ...researchExperiences.map(exp => ({ ...exp, category: 'Research' }))
-  ].sort((a, b) => {
-    // Sort by date (most recent first) - simplified sorting
-    return new Date(b.date.split(' - ')[0]) - new Date(a.date.split(' - ')[0]);
-  });
+  ].sort((a, b) => a.id - b.id);
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
 
-  const experiencesToShow = activeTab === 0 ? allExperiences : activeTab === 1 ? industryExperiences : researchExperiences;
+  const experiencesToShow = activeTab === 0
+    ? allExperiences
+    : allExperiences.filter(exp => exp.category === (activeTab === 1 ? 'Industry' : 'Research'));
 
   return (
     <Box component="main" className="experience" sx={{ 
@@ -157,7 +169,7 @@ function Experience() {
             color: '#666',
             mb: 3
           }}>
-            Industry & Research • Software Engineering • Machine Learning • Data Visualization
+            What's Next? Right now I am super interested in backend engineering, distributed computing, and networking. My last internship at Duolingo gave me an opportunity to focus on backend architecture and database design. 
           </Typography>
           
           {/* Tabs */}
@@ -429,7 +441,9 @@ function Experience() {
                             <Box
                               component="img"
                               src={
-                                experience.hasImage && experience.company.includes("Data to Discovery")
+                                experience.company === "Duolingo"
+                                  ? "/duolingo.png"
+                                  : experience.hasImage && experience.company.includes("Data to Discovery")
                                   ? "/image.png"
                                   : experience.company.includes("California Institute of Technology")
                                   ? fsriPoster
