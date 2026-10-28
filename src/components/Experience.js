@@ -43,7 +43,7 @@ function Experience() {
       
       id: 1,
       company: "CrowdStrike",
-      title: "Customer Success Automation Intern",
+      title: "Automation Engineering Intern",
       date: "October 2025 - Present",
       tools: ["Python", "Automation", "UX Design", "User Research", "Support Workflows"],
       description: "Scoped and implemented automation solutions that streamlined manual workflows and resolved 70%-90% of support cases. Redesigned user interfaces for Python-based automation platforms used in customer ticket resolution, improving end-user experience and usability. Led approximately 10 UX interviews with internal stakeholders and end users, translating feedback into feature improvements and higher platform adoption.",
@@ -78,7 +78,7 @@ function Experience() {
       linkText: "Learn More About Data to Discovery",
     },
     {
-      id: 5,
+      id: 10,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
