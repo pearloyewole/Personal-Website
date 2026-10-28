@@ -41,7 +41,7 @@ function Experience() {
            { 
       id: 2,
       company: "Virtu Financial",
-      title: "Quantative Trading Winter",
+      title: "Quantative Trading Wintern",
       date: "January 2026",
       tools: ["Pandas", "Python"],
       description: "Analyzed gold futures market data using Python, pandas, and statistical techniques to identify predictive trading signals +  alpha.Developed and validated predictive models, then implemented algorithmic trading strategies on unseen simulated exchange data. Presented research findings and trading strategies to stakeholders, generating approximately $3 million in simulated profits." ,
@@ -88,7 +88,7 @@ function Experience() {
       linkText: "Learn More About Data to Discovery",
     },
     {
-      id: 10,
+      id: 8,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
@@ -114,7 +114,7 @@ function Experience() {
       pdfLink: "/SEES Poster.pdf"
     },
     {
-      id: 7,
+      id: 9,
       company: "North Carolina State University Game2Learn Lab",
       title: "Research Intern",
       date: "June 2021 - July 2022",
