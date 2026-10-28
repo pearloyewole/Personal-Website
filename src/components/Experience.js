@@ -30,7 +30,7 @@ function Experience() {
       title: "Software Engineering Intern ",
       date: "June 2026 - August 2026",
       tools: ["Python", "Flask", "DynamoDB", "Swift", "XCode", "Figma"],
-      description: "Architected mental-math learning mini-game using Swift, MVVM, Flask, and DynamoDB, designed to scale to 7M projected users..Built REST APIs, data access layers, managers, business logic, unit tests, and DynamoDB integrations for reliable client-server communication. Presented a SAT preparation hackathon project supported by market research demonstrating potential reach of 3M students annually to the CEO, executive leadership, and ~500 engineers",
+      description: "Architected mental-math learning mini-game using Swift, MVVM, Flask, and DynamoDB. Built REST APIs, data access layers, managers, business logic, unit tests, and DynamoDB integrations for reliable client-server communication. Presented a SAT preparation hackathon project supported by market research demonstrating potential reach of 3M students annually to the CEO, executive leadership, and ~500 engineers",
       location: "Pittsburgh, PA",
       type: "Industry",
       hasPoster: false, 
