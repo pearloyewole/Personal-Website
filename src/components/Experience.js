@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Experience.css';
-import useMasonryGrid from './useMasonryGrid';
 import { 
   Card, 
   CardContent, 
@@ -20,7 +19,6 @@ import fsriPoster from '../assets/fsriposter.png';
 import seesPoster from '../assets/seesposter.png';
 
 function Experience() {
-  const gridRef = useMasonryGrid();
   const [imageErrors, setImageErrors] = useState({});
   const [activeTab, setActiveTab] = useState(0);
 
@@ -65,6 +63,8 @@ function Experience() {
     {
       id: 3,
       company: "Jane Street Capital",
+      hasImage: true,
+      imageUrl: "/jane%20street.jpeg",
       title: "Software Engineering Fellow",
       date: "June 2025 - August 2025",
       tools: ["OCaml", "ETC Trading", "Game AI", "Graph Algorithms", "Web Scraping"],
@@ -240,12 +240,11 @@ function Experience() {
 
       {/* Experience Feed */}
       <section aria-label="Experience">
-        <Box ref={gridRef} sx={{ 
+        <Box sx={{ 
           mx: 'auto', 
           px: { xs: 1, md: 2 },
           display: 'grid',
-          gridAutoRows: '1px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+          gridTemplateColumns: 'minmax(0, 1fr)',
           gap: '24px',
           alignItems: 'start'
         }}>
@@ -282,7 +281,7 @@ function Experience() {
                   zIndex: 0
                 },
                 '&:hover': {
-                  transform: 'translateY(-8px) scale(1.02)',
+                  transform: 'translateY(-4px)',
                   boxShadow: '0 25px 70px rgba(91, 129, 101, 0.2)',
                   '&::before': {
                     opacity: 1
@@ -385,12 +384,17 @@ function Experience() {
               <Box sx={{ 
                 p: { xs: 2, md: 3 }, 
                 pt: 2,
-                display: 'flex',
-                flexDirection: 'column',
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: 'minmax(0, 1fr)',
+                  md: hasVisual ? 'minmax(0, 3fr) minmax(0, 2fr)' : 'minmax(0, 1fr)'
+                },
+                alignItems: 'start',
+                textAlign: 'left',
                 gap: { xs: 2, md: 4 }
               }}>
                 {/* Description Column */}
-                <Box sx={{ flex: hasVisual ? 1 : 'unset' }}>
+                <Box sx={{ width: '100%', minWidth: 0, gridColumn: hasVisual ? 'auto' : '1 / -1' }}>
                   <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '0.875rem', md: '0.9rem' } }}>
                     Tools & Technologies
                   </Typography>
@@ -420,6 +424,8 @@ function Experience() {
                   </Box>
                   <Typography variant="body1" sx={{ 
                     color: '#333', 
+                    maxWidth: 'none',
+                    width: '100%',
                     lineHeight: 1.6,
                     fontSize: { xs: '0.9rem', md: '1rem' }
                   }}>
@@ -470,7 +476,7 @@ function Experience() {
                             <Box
                               component="img"
                               src={
-                                experience.company === "Duolingo"
+                                experience.imageUrl || (experience.company === "Duolingo"
                                   ? "/duolingo.png"
                                   : experience.hasImage && experience.company.includes("Data to Discovery")
                                   ? "/image.png"
@@ -478,9 +484,9 @@ function Experience() {
                                   ? fsriPoster
                                   : experience.company.includes("NASA")
                                   ? seesPoster
-                                  : fsriPoster
+                                  : fsriPoster)
                               }
-                              alt={experience.hasImage ? `Data Visualization - ${experience.company}` : `Research Poster - ${experience.company}`}
+                              alt={experience.hasImage ? `${experience.company} experience` : `Research Poster - ${experience.company}`}
                               onError={(e) => {
                                 console.error('Image failed to load:', e.target.src, 'for experience:', `${experience.category}-${experience.id}`);
                                 setImageErrors(prev => ({ ...prev, [`${experience.category}-${experience.id}`]: true }));
