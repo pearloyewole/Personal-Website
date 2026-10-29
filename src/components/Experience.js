@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Experience.css';
+import useMasonryGrid from './useMasonryGrid';
 import { 
   Card, 
   CardContent, 
@@ -19,6 +20,7 @@ import fsriPoster from '../assets/fsriposter.png';
 import seesPoster from '../assets/seesposter.png';
 
 function Experience() {
+  const gridRef = useMasonryGrid();
   const [imageErrors, setImageErrors] = useState({});
   const [activeTab, setActiveTab] = useState(0);
 
@@ -238,10 +240,11 @@ function Experience() {
 
       {/* Experience Feed */}
       <section aria-label="Experience">
-        <Box sx={{ 
+        <Box ref={gridRef} sx={{ 
           mx: 'auto', 
           px: { xs: 1, md: 2 },
           display: 'grid',
+          gridAutoRows: '1px',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
           gap: '24px',
           alignItems: 'start'

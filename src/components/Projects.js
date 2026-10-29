@@ -1,5 +1,6 @@
 import React from "react";
 import "./Projects.css";
+import useMasonryGrid from './useMasonryGrid';
 import ProjectNodeMap from "./ProjectNodeMap";
 import {
   Card,
@@ -96,6 +97,7 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
 }
 
 export default function Projects() {
+  const gridRef = useMasonryGrid();
   const projects = [
     {
       id: 9,
@@ -367,10 +369,11 @@ export default function Projects() {
         </Box>
       </Paper>
 
-      <Box sx={{ 
+      <Box ref={gridRef} sx={{ 
         mx: "auto", 
         px: { xs: 1, md: 2 },
         display: "grid",
+        gridAutoRows: "1px",
         gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
         gap: "24px",
         alignItems: "start",
