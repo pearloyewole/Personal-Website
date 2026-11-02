@@ -186,14 +186,14 @@ function Experience() {
           <Typography variant="h4" component="h1" gutterBottom sx={{ 
             fontFamily: '"Newsreader", serif',
             fontWeight: 400,
-            fontSize: { xs: '2rem', md: '3rem' },
+            fontSize: { xs: '2.25rem', md: '3.25rem' },
             color: '#000000ff',
             mb: 2
           }}>
             Experience
           </Typography>
           <Typography variant="body1" sx={{ 
-            fontSize: { xs: '1rem', md: '1.2rem' },
+            fontSize: { xs: '1.125rem', md: '1.3rem' },
             fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             color: '#666',
             mb: 3
@@ -209,7 +209,7 @@ function Experience() {
               '& .MuiTab-root': {
                 fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontWeight: 500,
-                fontSize: '1rem',
+                fontSize: '1.125rem',
                 textTransform: 'none',
                 color: '#666',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -298,7 +298,7 @@ function Experience() {
                   <Box sx={{ flex: 1, width: '100%' }}>
                     <Typography variant="h6" component="h2" gutterBottom sx={{ 
                       fontWeight: 600,
-                      fontSize: { xs: '1.2rem', md: '1.5rem' },
+                      fontSize: { xs: '1.4rem', md: '1.75rem' },
                       color: '#5b8165',
                       textAlign: 'left'
                     }}>
@@ -308,18 +308,18 @@ function Experience() {
                       color: '#8fbfa3', 
                       fontWeight: 500,
                       mb: 1,
-                      fontSize: { xs: '0.95rem', md: '1.1rem' },
+                      fontSize: { xs: '1.125rem', md: '1.3rem' },
                       textAlign: 'left'
                     }}>
                       {experience.title}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 2 }, mb: 1, flexWrap: 'wrap' }}>
-                      <CalendarToday sx={{ fontSize: { xs: 14, md: 16 }, color: '#8fbfa3' }} />
-                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '0.8rem', md: '0.875rem' } }}>
+                      <CalendarToday sx={{ fontSize: { xs: 18, md: 20 }, color: '#8fbfa3' }} />
+                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
                         {experience.date}
                       </Typography>
-                      <LocationOn sx={{ fontSize: { xs: 14, md: 16 }, color: '#5b8165' }} />
-                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '0.8rem', md: '0.875rem' } }}>
+                      <LocationOn sx={{ fontSize: { xs: 18, md: 20 }, color: '#5b8165' }} />
+                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
                         {experience.location}
                       </Typography>
                     </Box>
@@ -340,7 +340,7 @@ function Experience() {
                         color: 'white',
                         borderRadius: '16px',
                         fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                        fontSize: { xs: '0.75rem', md: '0.8rem' },
+                        fontSize: { xs: '0.95rem', md: '1rem' },
                         fontWeight: 500,
                         cursor: 'pointer',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -395,7 +395,7 @@ function Experience() {
               }}>
                 {/* Description Column */}
                 <Box sx={{ width: '100%', minWidth: 0, gridColumn: hasVisual ? 'auto' : '1 / -1' }}>
-                  <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '0.875rem', md: '0.9rem' } }}>
+                  <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
                     Tools & Technologies
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 1.5 }, mb: { xs: 2, md: 3 } }}>
@@ -408,8 +408,8 @@ function Experience() {
                         sx={{ 
                           borderColor: '#8fbfa3', 
                           color: '#5b8165',
-                          fontSize: { xs: '0.7rem', md: '0.75rem' },
-                          height: { xs: 24, md: 28 },
+                          fontSize: { xs: '0.875rem', md: '1rem' },
+                          height: { xs: 32, md: 36 },
                           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                           animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both`,
                           '&:hover': {
@@ -427,7 +427,7 @@ function Experience() {
                     maxWidth: 'none',
                     width: '100%',
                     lineHeight: 1.6,
-                    fontSize: { xs: '0.9rem', md: '1rem' }
+                    fontSize: { xs: '1.125rem', md: '1.25rem' }
                   }}>
                     {experience.description}
                   </Typography>
@@ -525,7 +525,7 @@ function Experience() {
                               sx={{ 
                                 backgroundColor: '#8fbfa3',
                                 '&:hover': { backgroundColor: '#a5b780' },
-                                fontSize: { xs: '0.75rem', md: '0.875rem' },
+                                fontSize: { xs: '0.95rem', md: '1.05rem' },
                                 px: { xs: 1.5, md: 2 },
                                 py: { xs: 0.75, md: 1 }
                               }}
@@ -538,7 +538,7 @@ function Experience() {
                               startIcon={<Download />}
                               href={experience.pdfLink}
                               download
-                              sx={{ borderColor: '#8fbfa3', color: '#8fbfa3' }}
+                              sx={{ borderColor: '#8fbfa3', color: '#8fbfa3', fontSize: { xs: '0.95rem', md: '1.05rem' } }}
                             >
                               View PDF
                             </Button>

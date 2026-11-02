@@ -117,7 +117,7 @@ function App() {
                         dotSize={1.7}
                         cycleSeconds={6}
                       />
-                      <p className="avatar-hint">click on me!:</p>
+                      <p className="avatar-hint">click on me!</p>
                     </div>
                   </div>
                 </>
