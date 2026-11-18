@@ -41,7 +41,7 @@ function Experience() {
            { 
       id: 1,
       company: "Virtu Financial",
-      title: "Quantative Trading Wintern",
+      title: "Quantitative Trading Wintern",
       date: "January 2026",
       tools: ["Pandas", "Python"],
       description: "Analyzed gold futures market data using Python, pandas, and statistical techniques to identify predictive trading signals +  alpha.Developed and validated predictive models, then implemented algorithmic trading strategies on unseen simulated exchange data. Presented research findings and trading strategies to stakeholders, generating approximately $3 million in simulated profits." ,
@@ -51,7 +51,7 @@ function Experience() {
       
       {
       
-      id: 2,
+      id: 3,
       company: "CrowdStrike",
       title: "Automation Engineering Intern",
       date: "October 2025 - Present",
@@ -61,7 +61,7 @@ function Experience() {
       type: "Industry",
     },
     {
-      id: 3,
+      id: 4,
       company: "Jane Street Capital",
       hasImage: true,
       imageUrl: "/jane%20street.jpeg",
@@ -76,7 +76,7 @@ function Experience() {
 
   const researchExperiences = [
     {
-      id: 4,
+      id: 2,
       company: "Data to Discovery + NASA Jet Propulsion Laboratory",
       title: "Data Visualization Tool Lead Developer",
       date: "September 2025 - June 2026",
@@ -90,7 +90,7 @@ function Experience() {
       linkText: "Learn More About Data to Discovery",
     },
     {
-      id: 11,
+      id: 5,
       company: "California Institute of Technology",
       title: "Student Researcher",
       date: "June 2024 - September 2024",
@@ -104,7 +104,7 @@ function Experience() {
       linkText: "Learn more about FSRI →"
     },
     {
-      id: 10,
+      id: 6,
       company: "NASA & University of Texas Center for Space Research",
       title: "SEES Research Intern",
       date: "June 2023 - August 2023",
@@ -116,7 +116,7 @@ function Experience() {
       pdfLink: "/SEES Poster.pdf"
     },
     {
-      id: 9,
+      id: 7,
       company: "North Carolina State University Game2Learn Lab",
       title: "Research Intern",
       date: "June 2021 - July 2022",
