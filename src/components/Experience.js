@@ -5,14 +5,12 @@ import {
   CardContent, 
   Typography, 
   Box, 
-  Chip, 
   Divider,
   Paper,
   Button,
   Tabs,
   Tab
 } from '@mui/material';
-import { LocationOn, CalendarToday, Download } from '@mui/icons-material';
 
 // Import images
 import fsriPoster from '../assets/fsriposter.png';
@@ -209,6 +207,16 @@ function Experience() {
           <Tabs 
             value={activeTab} 
             onChange={handleTabChange}
+            slotProps={{
+              indicator: {
+                sx: {
+                  backgroundColor: '#8fbfa3',
+                  height: 3,
+                  borderRadius: '3px 3px 0 0',
+                  transition: 'none'
+                }
+              }
+            }}
             sx={{
               minHeight: 44,
               '& .MuiTab-root': {
@@ -220,27 +228,26 @@ function Experience() {
                 fontSize: '1.125rem',
                 textTransform: 'none',
                 color: '#666',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                animation: 'none',
+                opacity: 1,
+                transform: 'none',
+                transition: 'none',
                 '&:hover': {
-                  color: '#8fbfa3',
-                  transform: 'translateY(-2px)'
+                  color: '#8fbfa3'
                 },
                 '&.Mui-selected': {
-                  color: '#5b8165',
-                  transform: 'scale(1.05)'
+                  color: '#5b8165'
+                },
+                '&.Mui-focusVisible': {
+                  outline: '2px solid #5b8165',
+                  outlineOffset: -2
                 }
-              },
-              '& .MuiTabs-indicator': {
-                backgroundColor: '#8fbfa3',
-                height: 3,
-                borderRadius: '3px 3px 0 0',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
               }
             }}
           >
-            <Tab label="All" />
-            <Tab label="Industry" />
-            <Tab label="Research" />
+            <Tab label="All" disableRipple />
+            <Tab label="Industry" disableRipple />
+            <Tab label="Research" disableRipple />
           </Tabs>
         </Box>
         </Paper>
@@ -254,17 +261,11 @@ function Experience() {
           gap: { xs: 1.5, md: 2 },
           alignItems: 'start'
         }}>
-          {experiencesToShow.map((experience, index) => {
+          {experiencesToShow.map((experience) => {
             const experienceKey = `${experience.category}-${experience.id}`;
             const hasVisual = experience.hasPoster || experience.hasImage;
             return (
-            <article 
-              key={experienceKey}
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-                minWidth: 0
-              }}
-            >
+            <article key={experienceKey} style={{ minWidth: 0 }}>
               <Card sx={{ 
                 height: 'auto',
                 borderRadius: '20px', 
@@ -330,18 +331,13 @@ function Experience() {
                       rowGap: 0.5,
                       color: '#666',
                       '& > span': {
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 0.5,
                         fontSize: { xs: '1rem', md: '1.125rem' }
                       }
                     }}>
                       <Typography component="span" variant="body2">
-                        <CalendarToday sx={{ fontSize: 16, color: '#8fbfa3' }} />
                         {experience.date}
                       </Typography>
                       <Typography component="span" variant="body2">
-                        <LocationOn sx={{ fontSize: 16, color: '#5b8165' }} />
                         {experience.location}
                       </Typography>
                     </Box>
@@ -415,33 +411,10 @@ function Experience() {
               }}>
                 {/* Description Column */}
                 <Box sx={{ minWidth: 0 }}>
-                  <Typography variant="body2" sx={{ mb: 0.75, color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
-                    Tools & Technologies
+                  <Typography variant="body2" sx={{ mb: 2, color: '#506558', fontSize: '0.9375rem', lineHeight: 1.55, textAlign: 'left' }}>
+                    <Box component="strong" sx={{ mr: 1, color: '#253a30' }}>Tools</Box>{' '}
+                    {experience.tools.join(', ')}
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.25 }}>
-                    {experience.tools.map((tool, i) => (
-                      <Chip 
-                        key={i} 
-                        label={tool} 
-                        size="small" 
-                        variant="outlined"
-                        sx={{ 
-                          borderColor: '#8fbfa3', 
-                          color: '#5b8165',
-                          fontSize: { xs: '0.875rem', md: '1rem' },
-                          height: 28,
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both`,
-                          '&:hover': {
-                            transform: 'translateY(-2px) scale(1.1)',
-                            backgroundColor: 'rgba(143, 191, 163, 0.1)',
-                            borderColor: '#5b8165',
-                            boxShadow: '0 4px 12px rgba(91, 129, 101, 0.2)'
-                          }
-                        }} 
-                      />
-                    ))}
-                  </Box>
                   <Typography variant="body1" sx={{ 
                     color: '#333', 
                     maxWidth: 'none',
@@ -475,6 +448,8 @@ function Experience() {
                     ) : (
                       <Box
                         component="img"
+                        loading="lazy"
+                        decoding="async"
                         src={
                           experience.imageUrl || (experience.company === "Duolingo"
                             ? "/duolingo.png"
@@ -504,7 +479,6 @@ function Experience() {
                       <Button
                         variant="outlined"
                         size="small"
-                        startIcon={<Download />}
                         href={experience.pdfLink}
                         download
                         sx={{ borderColor: '#8fbfa3', color: '#5b8165' }}

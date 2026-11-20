@@ -1,4 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const padding = 30;
+const idleFrameInterval = 1000 / 30;
 
 export default function ParticleAvatar({
   src,
@@ -8,131 +11,106 @@ export default function ParticleAvatar({
   bg = "transparent",
 }) {
   const canvasRef = useRef(null);
-  const offscreenRef = useRef(document.createElement("canvas"));
-  const rafRef = useRef(0);
-  const particlesRef = useRef([]);
-  const targetsRef = useRef([]);
-  const flowTRef = useRef(0);
-  const revealAlphaRef = useRef(0);
-  const modeRef = useRef("flow");
-  const padRef = useRef(24);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const onClick = () => {
-      modeRef.current = "form";
-    };
-    canvas.addEventListener("click", onClick);
-    return () => canvas.removeEventListener("click", onClick);
-  }, []);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return undefined;
 
-  useEffect(() => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = src;
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const motion = { forming: false, flowTime: 0, revealAlpha: 0 };
+    let thumbnail = null;
+    let particles = [];
+    let frameId = null;
+    let lastIdleFrame = -Infinity;
+    let onScreen = true;
 
-    img.onload = () => {
-      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
-      const off = offscreenRef.current;
-      const offCtx = off.getContext("2d");
-
-      const scaledHeight = width; 
-      const pad = 30;
-      padRef.current = pad;
-
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${scaledHeight}px`;
-      canvas.width = (width + pad * 2) * dpr;
-      canvas.height = (scaledHeight + pad * 2) * dpr;
-
-      off.width = Math.floor(width * dpr);
-      off.height = Math.floor(scaledHeight * dpr);
-      offCtx.clearRect(0, 0, off.width, off.height);
-      offCtx.drawImage(img, 0, 0, off.width, off.height);
-
-      const imgData = offCtx.getImageData(0, 0, off.width, off.height);
-
-      const pts = [];
-      const step = Math.max(2, Math.floor(density * dpr));
-      const centerX = off.width / 2;
-      const centerY = off.height / 2;
-      const radius = off.width / 2;
-
-      for (let y = 0; y < imgData.height; y += step) {
-        for (let x = 0; x < imgData.width; x += step) {
-          const dx = x - centerX;
-          const dy = y - centerY;
-          if (dx * dx + dy * dy > radius * radius) continue; // enforce circle mask
-          const idx = (y * imgData.width + x) * 4;
-          const a = imgData.data[idx + 3];
-          if (a > 40) {
-            const r = imgData.data[idx];
-            const g = imgData.data[idx + 1];
-            const b = imgData.data[idx + 2];
-            const tx = x / dpr + pad;
-            const ty = y / dpr + pad;
-            pts.push({ tx, ty, r, g, b, a });
-          }
-        }
+    function releaseParticles() {
+      particles = [];
+      if (thumbnail) {
+        thumbnail.width = 0;
+        thumbnail.height = 0;
+        thumbnail = null;
       }
+    }
 
-      const MAX = 3200;
-      const chosen =
-        pts.length > MAX
-          ? pts.filter((_, i) => i % Math.ceil(pts.length / MAX) === 0)
-          : pts;
+    function stopAnimation() {
+      if (frameId !== null) cancelAnimationFrame(frameId);
+      frameId = null;
+    }
 
-      targetsRef.current = chosen;
+    function syncAnimation() {
+      if (!onScreen || document.hidden || particles.length === 0) {
+        stopAnimation();
+      } else if (frameId === null) {
+        frameId = requestAnimationFrame(animate);
+      }
+    }
 
-      const P = chosen.map(({ r, g, b, a }) => {
-        const x = Math.random() * (canvas.width / dpr);
-        const y = Math.random() * (canvas.height / dpr);
-        return {
-          x,
-          y,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          color: `rgba(${r}, ${g}, ${b}, ${a / 255})`,
-        };
-      });
+    function animate(timestamp) {
+      frameId = null;
+      if (motion.forming || timestamp - lastIdleFrame >= idleFrameInterval - 1) {
+        drawFrame(ctx, canvas, thumbnail, particles, motion, dpr, dotSize, bg);
+        lastIdleFrame = timestamp;
+        if (motion.revealAlpha === 1) releaseParticles();
+      }
+      syncAnimation();
+    }
 
-      particlesRef.current = P;
-      flowTRef.current = 0;
-      revealAlphaRef.current = 0;
-      modeRef.current = "flow";
+    const observer = typeof IntersectionObserver === "function"
+      ? new IntersectionObserver(([entry]) => {
+        onScreen = entry.isIntersecting;
+        syncAnimation();
+      })
+      : null;
+    if (observer) {
+      onScreen = false;
+      observer.observe(canvas);
+    }
+
+    const reveal = () => {
+      motion.forming = true;
+      syncAnimation();
+    };
+    canvas.addEventListener("click", reveal);
+    document.addEventListener("visibilitychange", syncAnimation);
+
+    const image = new Image();
+    image.crossOrigin = "anonymous";
+    image.onload = () => {
+      canvas.width = Math.round((width + padding * 2) * dpr);
+      canvas.height = canvas.width;
+
+      thumbnail = document.createElement("canvas");
+      thumbnail.width = Math.floor(width * dpr);
+      thumbnail.height = thumbnail.width;
+      const thumbnailCtx = thumbnail.getContext("2d");
+      if (!thumbnailCtx) {
+        releaseParticles();
+        return;
+      }
+      thumbnailCtx.drawImage(image, 0, 0, thumbnail.width, thumbnail.height);
+      const pixels = thumbnailCtx.getImageData(0, 0, thumbnail.width, thumbnail.height);
+      particles = sampleParticles(pixels, canvas.width / dpr, density, dpr);
       setReady(true);
-
-      cancelAnimationFrame(rafRef.current);
-      const loop = () => {
-        drawFrame(
-          ctx,
-          canvas,
-          dpr,
-          bg,
-          dotSize,
-          particlesRef,
-          targetsRef,
-          flowTRef,
-          modeRef,
-          off,
-          revealAlphaRef,
-          padRef
-        );
-        rafRef.current = requestAnimationFrame(loop);
-      };
-      rafRef.current = requestAnimationFrame(loop);
+      syncAnimation();
     };
+    image.onerror = () => console.error("Failed to load image:", src);
+    image.src = src;
 
-    img.onerror = () => {
-      console.error("Failed to load image:", src);
+    return () => {
+      image.onload = null;
+      image.onerror = null;
+      image.removeAttribute("src");
+      observer?.disconnect();
+      document.removeEventListener("visibilitychange", syncAnimation);
+      canvas.removeEventListener("click", reveal);
+      stopAnimation();
+      releaseParticles();
+      canvas.width = 0;
+      canvas.height = 0;
     };
-
-    return () => cancelAnimationFrame(rafRef.current);
   }, [src, width, density, bg, dotSize]);
 
   return (
@@ -143,38 +121,53 @@ export default function ParticleAvatar({
         userSelect: "none",
         touchAction: "manipulation",
         cursor: ready ? "pointer" : "default",
-        borderRadius: "50%", // crop container circle
+        borderRadius: "50%",
         overflow: "hidden",
       }}
       aria-label="Interactive particle avatar"
       role="img"
       title="Click to reveal"
     >
-      <canvas ref={canvasRef} />
+      <canvas ref={canvasRef} style={{ width, height: width }} />
     </div>
   );
 }
 
-function drawFrame(
-  ctx,
-  canvas,
-  dpr,
-  bg,
-  dotSize,
-  particlesRef,
-  targetsRef,
-  flowTRef,
-  modeRef,
-  offscreenImageCanvas,
-  revealAlphaRef,
-  padRef
-) {
-  const P = particlesRef.current;
-  const T = targetsRef.current;
-  if (!P || !T || T.length === 0) return;
+function sampleParticles({ data, width, height }, size, density, dpr) {
+  const points = [];
+  const step = Math.max(2, Math.floor(density * dpr));
+  const center = width / 2;
+  const offset = padding * dpr;
 
-  const N = Math.min(P.length, T.length);
+  for (let y = 0; y < height; y += step) {
+    for (let x = 0; x < width; x += step) {
+      const dx = x - center;
+      const dy = y - center;
+      if (dx * dx + dy * dy > center * center) continue;
 
+      const index = (y * width + x) * 4;
+      const alpha = data[index + 3];
+      if (alpha > 40) {
+        points.push({
+          targetX: x + offset,
+          targetY: y + offset,
+          color: `rgba(${data[index]}, ${data[index + 1]}, ${data[index + 2]}, ${alpha / 255})`,
+        });
+      }
+    }
+  }
+
+  const stride = Math.max(1, Math.ceil(points.length / 3200));
+  return points.filter((_, index) => index % stride === 0).map((point) => ({
+    ...point,
+    x: Math.random() * size,
+    y: Math.random() * size,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+  }));
+}
+
+function drawFrame(ctx, canvas, thumbnail, particles, motion, dpr, dotSize, bg) {
   if (bg === "transparent") {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   } else {
@@ -182,86 +175,63 @@ function drawFrame(
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
-  // apply circular mask
+  const offset = padding * dpr;
+  const center = canvas.width / 2;
   ctx.save();
-  const radius = (canvas.width - padRef.current * 2 * dpr) / 2;
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
   ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+  ctx.arc(center, center, center - offset, 0, Math.PI * 2);
   ctx.clip();
 
-  flowTRef.current += 0.005;
-  const flowT = flowTRef.current;
-  const mode = modeRef.current;
+  motion.flowTime += 0.005;
+  const maxSpeed = (motion.forming ? 1.4 : 0.6) * dpr;
+  const snapDistance = Math.max(1.2 * dpr, dotSize * dpr * 1.4);
+  const radius = Math.max(1, dotSize * dpr);
+  let settled = 0;
 
-  const snapTol = Math.max(1.2 * dpr, dotSize * dpr * 1.4);
-  const k = mode === "form" ? 0.22 : 0.02;
-  const damping = mode === "form" ? 0.72 : 0.96;
-  const maxV = mode === "form" ? 1.4 * dpr : 0.6 * dpr;
+  for (let i = 0; i < particles.length; i++) {
+    const particle = particles[i];
 
-  let settledCount = 0;
-
-  for (let i = 0; i < N; i++) {
-    const p = P[i];
-    const t = T[i];
-
-    if (mode === "form") {
-      const tx = t.tx * dpr;
-      const ty = t.ty * dpr;
-      const dx = tx - p.x;
-      const dy = ty - p.y;
-      const dist2 = dx * dx + dy * dy;
-
-      if (dist2 < snapTol * snapTol) {
-        p.x = tx;
-        p.y = ty;
-        p.vx = 0;
-        p.vy = 0;
-        settledCount++;
+    if (motion.forming) {
+      const dx = particle.targetX - particle.x;
+      const dy = particle.targetY - particle.y;
+      if (dx * dx + dy * dy < snapDistance * snapDistance) {
+        particle.x = particle.targetX;
+        particle.y = particle.targetY;
+        particle.vx = 0;
+        particle.vy = 0;
+        settled++;
       } else {
-        p.vx = (p.vx + dx * k) * damping;
-        p.vy = (p.vy + dy * k) * damping;
+        particle.vx = (particle.vx + dx * 0.22) * 0.72;
+        particle.vy = (particle.vy + dy * 0.22) * 0.72;
       }
     } else {
-      const angle = pseudoNoise(i * 0.013, flowT) * Math.PI * 2;
-      p.vx = p.vx * 0.98 + Math.cos(angle) * 0.02 * dpr;
-      p.vy = p.vy * 0.98 + Math.sin(angle) * 0.02 * dpr;
+      const angle = pseudoNoise(i * 0.013, motion.flowTime) * Math.PI * 2;
+      particle.vx = particle.vx * 0.98 + Math.cos(angle) * 0.02 * dpr;
+      particle.vy = particle.vy * 0.98 + Math.sin(angle) * 0.02 * dpr;
     }
 
-    const mag = Math.hypot(p.vx, p.vy) || 1;
-    if (mag > maxV) {
-      p.vx = (p.vx / mag) * maxV;
-      p.vy = (p.vy / mag) * maxV;
+    const speed = Math.hypot(particle.vx, particle.vy);
+    if (speed > maxSpeed) {
+      particle.vx *= maxSpeed / speed;
+      particle.vy *= maxSpeed / speed;
     }
+    particle.x += particle.vx;
+    particle.y += particle.vy;
 
-    p.x += p.vx;
-    p.y += p.vy;
-  }
-
-  const r = Math.max(1, dotSize * dpr);
-  for (let i = 0; i < N; i++) {
-    const p = P[i];
     ctx.beginPath();
-    ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
-    ctx.fillStyle = T[i].a > 0 ? P[i].color : "rgba(0,0,0,0.6)";
+    ctx.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = particle.color;
     ctx.fill();
   }
 
-  if (mode === "form" && offscreenImageCanvas) {
-    const settledFrac = settledCount / N;
-    const targetAlpha = settledFrac >= 0.85 ? 1 : 0;
-    revealAlphaRef.current += (targetAlpha - revealAlphaRef.current) * 0.03;
-
-    const a = Math.max(0, Math.min(1, revealAlphaRef.current));
-    if (a > 0.01) {
-      ctx.save();
-      ctx.globalAlpha = a;
-      ctx.drawImage(offscreenImageCanvas, padRef.current * dpr, padRef.current * dpr);
-      ctx.restore();
+  if (motion.forming) {
+    const targetAlpha = settled / particles.length >= 0.85 ? 1 : 0;
+    motion.revealAlpha += (targetAlpha - motion.revealAlpha) * 0.03;
+    if (motion.revealAlpha >= 0.99) motion.revealAlpha = 1;
+    if (motion.revealAlpha > 0.01) {
+      ctx.globalAlpha = motion.revealAlpha;
+      ctx.drawImage(thumbnail, offset, offset);
     }
-  } else {
-    revealAlphaRef.current = Math.max(0, revealAlphaRef.current - 0.06);
   }
 
   ctx.restore();

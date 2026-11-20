@@ -7,26 +7,16 @@ import {
   CardContent,
   Typography,
   Box,
-  Chip,
   Divider,
   Paper,
   Button,
 } from "@mui/material";
-import {
-  CalendarToday,
-  LocationOn,
-  PlayCircle,
-  Code,
-  Language,
-} from "@mui/icons-material";
 
 // Import all media files
-import edenDemo from '../assets/eden-demo.mp4';
 import edenPoster from '../assets/eden.png';
 import soroImage from '../assets/soro.png';
 import bsuWebsite from '../assets/bsu-website.png';
 import pcCity from '../assets/pc_city.png';
-import flappyJoyride from '../assets/flappy_joyride.mp4';
 import flappyPoster from '../assets/flappy-joyride.png';
 
 function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
@@ -49,6 +39,8 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
           component="img"
           src={mediaUrl}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           sx={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
         />
       </Box>
@@ -73,7 +65,7 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
           src={mediaUrl}
           poster={poster}
           controls
-          preload="metadata"
+          preload="none"
           sx={{ width: "100%", height: "100%", objectFit: "contain", display: "block", backgroundColor: "#101614" }}
         />
       </Box>
@@ -86,6 +78,7 @@ function Media({ mediaType, mediaUrl, poster, alt = "Project media" }) {
           component="iframe"
           src={mediaUrl}
           title={alt}
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           sx={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
@@ -102,6 +95,7 @@ export default function Projects() {
     {
       id: 9,
       title: "Memory and Energy Efficiency in Neural Networks",
+      mapLabel: "Neural Network Efficiency",
       org: "Biology Through the Algorithmic Lens (Bi 1C), Caltech",
       date: "May 2026",
       location: "Pasadena, CA",
@@ -111,12 +105,13 @@ export default function Projects() {
       mediaType: "image",
       mediaUrl: "/bi-1c-report-preview.png",
       cta: [
-        { label: "Read Report", href: "/Bi_1c_Final_Report.pdf", icon: <Language /> },
+        { label: "Read Report", href: "/Bi_1c_Final_Report.pdf" },
       ],
     },
     {
       id: 7,
       title: "Yukon - River Analysis and Visualization Platform",
+      mapLabel: "Yukon",
       org: "Data Visualization Project",
       date: "May 2026",
       location: "Pasadena, CA",
@@ -129,13 +124,13 @@ export default function Projects() {
         {
           label: "Open Demo",
           href: "https://yukon-ten.vercel.app/log-analysis.html?mode=demo&river=beaver",
-          icon: <Language />,
         },
       ],
     },
     {
       id: 6,
       title: "Your Future Block - HackTech 2026 Project",
+      mapLabel: "Your Future Block",
       org: "HackTech 2026",
       date: "April 2026",
       location: "Pasadena, CA",
@@ -156,7 +151,8 @@ export default function Projects() {
         "Fly.io",
         "Git",
         "Census Geocoder API",
-        "FastAPI/Python (backend path)",
+        "FastAPI",
+        "Python",
       ],
       description:
         "Your Future Block - HackTech 2026 Project. Your Future Block is an interactive climate-risk visualizer that helps people understand how climate hazards may affect their own communities over time. Instead of presenting climate change through abstract statistics, long reports, or difficult-to-read maps, Your Future Block lets users enter an address and explore projected climate risks around that block through a clear, visual, and local interface.",
@@ -166,17 +162,17 @@ export default function Projects() {
         {
           label: "Pitch Deck",
           href: "https://canva.link/7diuta24ax8o7l1",
-          icon: <Language />,
         },
       ],
     },
     {
       id: 8,
       title: "Soro - Yoruba Learning App",
+      mapLabel: "Soro",
       org: "Solo Developer",
       date: "September 2025",
       location: "Houston, TX",
-      tags: ["XCode, React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
+      tags: ["Xcode", "React Native", "Expo", "TypeScript", "Firebase", "Git", "Figma"],
       description:
         "Designed and built a mobile app that helps over 1,000 learners around the world practice Yoruba vocabulary, phrases, and pronunciation with a clean, focused experience. Integrated Firebase for auth and data, configured EAS builds, and prepared App Store distribution. This project taught me a lot about error handling and creating products that real users will interact with. I spent hours recreating crashes or bugs that would only occur in certain Testflights. Very fun to build and I update it regularly.",
       mediaType: "image",
@@ -186,23 +182,23 @@ export default function Projects() {
         {
           label: "Download on the App Store",
           href: "https://apps.apple.com/app/6752268695",
-          icon: <Language />,
         },
       ],
     }, 
      {
-      id: 6,
+      id: 10,
       title: "Eden: AI Sustainability Tracker Chrome Extension for Claude.ai",
+      mapLabel: "Eden",
       org: "HackMIT 2025",
       date: "September 2025",
       location: "Cambridge, MA",
-      tags: ["JSON", "React", "Typescript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
+      tags: ["JSON", "React", "TypeScript", "Claude API", "FastAPI", "Render", "PostgreSQL", "Git", "Figma", "CORs & origins" ],
       description: "Eden is a Chrome extension for claude.ai that monitors user's AI conversations and analyzes the environmental impact, shares better prompt engineering practices, and encourages users to think about AI sustainability.", 
       mediaType: "video",
-      mediaUrl: edenDemo,
+      mediaUrl: `${process.env.PUBLIC_URL}/eden-demo.mp4`,
       poster: edenPoster,
-      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025", icon: <Code /> }, 
-        {label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647", icon: <Language />}
+      cta: [{ label: "GitHub", href: "https://github.com/lidiann/HackMIT2025" },
+        { label: "Pitch Deck", href: "https://www.canva.com/design/DAGy7gCmidM/uAykTP6-pMAfoC0CreVSwg/view?utm_content=DAGy7gCmidM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0a1d6c5647" },
       ],
     },
     {
@@ -211,17 +207,18 @@ export default function Projects() {
       org: "California Institute of Technology",
       date: "September 2025",
       location: "Pasadena, CA",
-      tags: ["React.js", "Next.js", "Typescript", "HTML/CSS", "Supabase", "SMTP", "SQL", "Git", "Figma"],
+      tags: ["React", "Next.js", "TypeScript", "HTML/CSS", "Supabase", "SMTP", "SQL", "Git", "Figma"],
       description:
         "Redesigned a legacy club website and rebuilt it in React + Typescript to meet the growing needs of the Black Student Union. Implemented Supabase auth and a database to centralize member and alumni information and resumes.",
       mediaType: "image",
       mediaUrl: bsuWebsite,
       poster: "",
-      cta: [{ label: "View Site", href: "https://caltechbsu.org", icon: <Language /> }],
+      cta: [{ label: "View Site", href: "https://caltechbsu.org" }],
     },
     {
       id: 2,
       title: "PC City: City Simulation Game",
+      mapLabel: "PC City",
       org: "Jane Street Immersion Program",
       date: "August 2025",
       location: "New York, NY",
@@ -231,23 +228,24 @@ export default function Projects() {
       mediaType: "image",
       mediaUrl: pcCity,
       cta: [
-        { label: "Play Game", href: "https://pearloyewole.github.io/pc_city-play/", icon: <PlayCircle /> },
-        { label: "GitHub", href: "https://github.com/christineogo/PC_city", icon: <Code /> },
+        { label: "Play Game", href: "https://pearloyewole.github.io/pc_city-play/" },
+        { label: "GitHub", href: "https://github.com/christineogo/PC_city" },
       ],
     },
     {
       id: 3,
       title: "Flappy Joyride: Physics Engine Game",
+      mapLabel: "Flappy Joyride",
       org: "Introduction to Software Design (CS 3) Final Project",
       date: "June 2025",
       location: "Pasadena, CA ",
-      tags: ["C (Programming Language)", "SDL", " HTTP servers", "POSIX Sockets"],
+      tags: ["C (Programming Language)", "SDL", "HTTP servers", "POSIX Sockets"],
       description:
         "Developed a 2D side-scrolling physics engine game in C with SDL, implementing player movement, gravity, collision detection, power-ups, AI enemies, and a survival-time scoring system. Additionally, created a lightweight HTTP web server in C to support the web functionality of the game.",
       mediaType: "video",
-      mediaUrl: flappyJoyride,
+      mediaUrl: `${process.env.PUBLIC_URL}/flappy_joyride.mp4`,
       poster: flappyPoster,
-      cta: [{ label: "GitHub", href: "https://github.com/pearloyewole/flappy-joyride", icon: <Code /> }],
+      cta: [{ label: "GitHub", href: "https://github.com/pearloyewole/flappy-joyride" }],
     },
   ];
 
@@ -264,7 +262,7 @@ export default function Projects() {
       <Paper
         elevation={0}
         sx={{
-          p: { xs: 3, md: 4 },
+          p: { xs: 2, md: 4 },
           mb: 4,
           mx: { xs: 1, md: 2 },
           textAlign: "left",
@@ -277,96 +275,33 @@ export default function Projects() {
           overflow: "hidden",
         }}
       >
-        <Box
+        <Typography
+          variant="h4"
+          component="h1"
           sx={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            width: 60,
-            height: 60,
-            background:
-              "linear-gradient(135deg, rgba(143, 191, 163, 0.08) 0%, rgba(91, 129, 101, 0.08) 100%)",
-            borderRadius: "50%",
-            zIndex: 0,
+            fontFamily: '"Newsreader", serif',
+            fontWeight: 400,
+            fontSize: { xs: "2rem", md: "3rem" },
+            color: "#000000ff",
+            mb: 2,
           }}
-        />
-        <Box
+        >
+          Coding Projects
+        </Typography>
+        <Typography
+          variant="body1"
           sx={{
-            position: "absolute",
-            bottom: 20,
-            left: 20,
-            width: 50,
-            height: 50,
-            background:
-              "linear-gradient(135deg, rgba(91, 129, 101, 0.08) 0%, rgba(143, 191, 163, 0.08) 100%)",
-            borderRadius: "50%",
-            zIndex: 0,
+            fontSize: { xs: "1rem", md: "1.2rem" },
+            fontFamily:
+              '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
+            color: "#666",
+            maxWidth: "none",
+            mb: 3,
           }}
-        />
-        <Box sx={{ position: "relative", zIndex: 1 }}>
-          <Box sx={{ 
-            display: 'grid', 
-            gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
-            gap: { xs: 3, md: 4 },
-            alignItems: 'center'
-          }}>
-            {/* Text Content */}
-            <Box>
-              <Typography
-                variant="h4"
-                component="h1"
-                sx={{
-                  fontFamily: '"Newsreader", serif',
-                  fontWeight: 400,
-                  fontSize: { xs: "2rem", md: "3rem" },
-                  color: "#000000ff",
-                  mb: 2,
-                }}
-              >
-                Projects
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: "1rem", md: "1.2rem" },
-                  fontFamily:
-                    '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
-                  color: "#666",
-                  mb: 2,
-                  whiteSpace: 'pre-line',
-                }}
-              >
-                Yes, I code for fun. My projects utilize different skills and tools, and I'm always excited to pick up a new stack and see what I can build with it.{'\n\n'}Explore my projects and the tools I have used to build them!
-              </Typography>
-            </Box>
-
-            {/* 3D Node Map - Embedded */}
-            <Box sx={{ 
-              height: { xs: '300px', md: '400px', lg: '450px' },
-              borderRadius: '16px',
-              overflow: 'hidden',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-              backgroundColor: 'transparent'
-            }}>
-              <ProjectNodeMap 
-                projects={projects}
-                embedded={true}
-                onNodeClick={(project) => {
-                  // Scroll to the project card
-                  const element = document.getElementById(`project-${project.id}`);
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // Highlight the card briefly
-                    element.style.animation = 'highlight 1s ease-out';
-                    setTimeout(() => {
-                      element.style.animation = '';
-                    }, 1000);
-                  }
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
+        >
+          My projects utilize different skills and tools, and I'm always excited to pick up a new stack and see what I can build with it. If you would like to learn more about my research projects please look at the Experience section instead. 
+        </Typography>
+        <ProjectNodeMap projects={projects} />
       </Paper>
 
       <Box ref={gridRef} sx={{ 
@@ -382,6 +317,8 @@ export default function Projects() {
           <article
             key={p.id}
             id={`project-${p.id}`}
+            className="project-card"
+            tabIndex={-1}
             style={{
               animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
               minWidth: 0,
@@ -452,11 +389,9 @@ export default function Projects() {
                         {p.org}
                       </Typography>
                       <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1, md: 2 }, mb: 1, flexWrap: "wrap" }}>
-                        <CalendarToday sx={{ fontSize: { xs: 14, md: 16 }, color: "#8fbfa3" }} />
                         <Typography variant="body2" sx={{ fontSize: { xs: "0.8rem", md: "0.9rem" }, color: "#666" }}>
                           {p.date}
                         </Typography>
-                        <LocationOn sx={{ fontSize: { xs: 14, md: 16 }, color: "#5b8165" }} />
                         <Typography variant="body2" sx={{ fontSize: { xs: "0.8rem", md: "0.9rem" }, color: "#666" }}>
                           {p.location}
                         </Typography>
@@ -486,7 +421,7 @@ export default function Projects() {
                             mt: { xs: 1, sm: 0 },
                           }}
                         >
-                          {p.cta[0].label} →
+                          {p.cta[0].label}
                         </Box>
                       </a>
                     )}
@@ -497,33 +432,10 @@ export default function Projects() {
 
                 <Box sx={{ p: { xs: 2, md: 3 }, pt: 2, display: "flex", flexDirection: "column", gap: { xs: 2, md: 4 } }}>
                   <Box>
-                    <Typography variant="body2" sx={{ mb: 1.5, color: "#666", fontSize: { xs: "0.875rem", md: "0.9rem" } }}>
-                      Tools & Technologies
+                    <Typography variant="body2" sx={{ mb: 2, color: "#506558", fontSize: "0.9375rem", lineHeight: 1.55, textAlign: "left" }}>
+                      <Box component="strong" sx={{ mr: 1, color: "#253a30" }}>Tools</Box>{' '}
+                      {p.tags.join(", ")}
                     </Typography>
-                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: { xs: 1, md: 1.5 }, mb: { xs: 2, md: 3 } }}>
-                      {p.tags.map((t, i) => (
-                        <Chip
-                          key={`${p.id}-${t}-${i}`}
-                          label={t}
-                          size="small"
-                          variant="outlined"
-                          style={{ animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both` }}
-                          sx={{
-                            fontSize: { xs: "0.7rem", md: "0.75rem" },
-                            borderColor: "#8fbfa3",
-                            color: "#5b8165",
-                            height: { xs: 24, md: 28 },
-                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                            "&:hover": {
-                              transform: "translateY(-2px) scale(1.1)",
-                              backgroundColor: "rgba(143, 191, 163, 0.1)",
-                              borderColor: "#5b8165",
-                              boxShadow: "0 4px 12px rgba(91, 129, 101, 0.2)",
-                            },
-                          }}
-                        />
-                      ))}
-                    </Box>
                     <Typography
                       variant="body1"
                       sx={{
@@ -559,7 +471,6 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             variant="outlined"
                             size="small"
-                            startIcon={action.icon}
                             sx={{ borderColor: "#8fbfa3", color: "#5b8165", textTransform: "none", borderRadius: "999px" }}
                           >
                             {action.label}

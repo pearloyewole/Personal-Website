@@ -7,7 +7,7 @@ import SEO from './components/SEO';
 import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
 import { LinkedIn, GitHub } from '@mui/icons-material';
-import introPhoto from './assets/intro-photo.png';
+import introPhoto from './assets/intro-photo-640.png';
 import { currentUpdate } from './currentUpdate';
 
 function Navigation() {
@@ -39,7 +39,7 @@ function Navigation() {
   );
 }
 
-function App() {
+function IntroText() {
   const [displayText, setDisplayText] = useState('');
   const fullText =
     "I am a Computer Science student at the California Institute of Technology (Caltech). I am interested in using technology to work on impactful, real-world problems! This website also serves as an example of my website development capabilities.";
@@ -57,6 +57,15 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
+  return (
+    <p className="typing-text">
+      {displayText}
+      <span className="cursor">|</span>
+    </p>
+  );
+}
+
+function App() {
   return (
     <HelmetProvider>
       <Router>
@@ -78,10 +87,7 @@ function App() {
                     <div className="text-content">
                       <h1 className="Intro"> Hi! I'm Pearl. </h1>
                       <h3> Undergraduate Student @ Caltech, Studying Computer Science</h3>
-                      <p className="typing-text">
-                        {displayText}
-                        <span className="cursor">|</span>
-                      </p>
+                      <IntroText />
 
                       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                         
@@ -121,7 +127,6 @@ function App() {
                         width={320}
                         density={5}
                         dotSize={1.7}
-                        cycleSeconds={6}
                       />
                       <p className="avatar-hint">click on me!</p>
                     </div>
