@@ -12,9 +12,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
-  padding: 15rem 2rem;
+  padding: clamp(5rem, 13vh, 10rem) 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -23,6 +23,73 @@
   flex: 1;
   text-align: left;
   max-width: 600px;
+}
+
+.current-update {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 35rem;
+  margin-top: 1.5rem;
+  border: 1px solid #b9d2c1;
+  border-radius: 1rem;
+  background: #f4f8f2;
+  color: #294536;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(41, 69, 54, 0.1);
+}
+
+.current-update summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border-radius: 1rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.current-update summary::-webkit-details-marker {
+  display: none;
+}
+
+.current-update summary::after {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  flex-shrink: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.current-update[open] summary::after {
+  transform: rotate(225deg);
+}
+
+.current-update summary:focus-visible {
+  outline: 2px solid #5b8165;
+  outline-offset: 2px;
+}
+
+.current-update p {
+  margin: 0;
+  padding: 0 1.25rem 1.25rem;
+  font-family: "Newsreader", serif;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+@media screen and (max-width: 768px) {
+  .current-update {
+    margin-inline: auto;
+  }
 }
 
 .App-header {
@@ -198,7 +265,9 @@ button {
 @media screen and (max-width: 768px) {
   .content {
     flex-direction: column-reverse;
+    align-items: center;
     gap: 2rem;
+    padding: 4rem 1.25rem;
   }
   .text-content {
     text-align: center;

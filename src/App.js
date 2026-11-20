@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import ParticleAvatar from './ParticleAvatar';
 import { LinkedIn, GitHub } from '@mui/icons-material';
 import introPhoto from './assets/intro-photo.png';
+import { currentUpdate } from './currentUpdate';
 
 function Navigation() {
   return (
@@ -106,6 +107,11 @@ function App() {
                         </a>
               
                       </div>
+
+                      <details className="current-update" open>
+                        <summary>Currently working on</summary>
+                        <p>{currentUpdate}</p>
+                      </details>
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>

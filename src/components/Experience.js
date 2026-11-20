@@ -12,7 +12,7 @@ import {
   Tabs,
   Tab
 } from '@mui/material';
-import { LocationOn, CalendarToday, Download, OpenInNew } from '@mui/icons-material';
+import { LocationOn, CalendarToday, Download } from '@mui/icons-material';
 
 // Import images
 import fsriPoster from '../assets/fsriposter.png';
@@ -160,19 +160,22 @@ function Experience() {
     : allExperiences.filter(exp => exp.category === (activeTab === 1 ? 'Industry' : 'Research'));
 
   return (
-    <Box component="main" className="experience" sx={{ 
-      p: { xs: 2, md: 4 }, 
-      pt: { xs: 4, md: 6 },
+    <Box component="main" className="experience" sx={{
+      px: { xs: 2, sm: 3, md: 5 },
+      py: { xs: 4, md: 6 },
       backgroundColor: '#fefefe', 
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%)'
+      background: 'linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%)',
+      '& > header, & > section': {
+        maxWidth: '72rem',
+        mx: 'auto'
+      }
     }}>
       {/* Profile Header */}
       <header>
         <Paper elevation={0} sx={{ 
-          p: { xs: 3, md: 4 }, 
-          mb: 4, 
-          mx: { xs: 1, md: 2 },
+          p: { xs: 2, md: 2.5 },
+          mb: { xs: 2, md: 2.5 },
           textAlign: 'left', 
           backgroundColor: 'white',
           borderRadius: '24px',
@@ -188,7 +191,7 @@ function Experience() {
             fontWeight: 400,
             fontSize: { xs: '2.25rem', md: '3.25rem' },
             color: '#000000ff',
-            mb: 2
+            mb: 1
           }}>
             Experience
           </Typography>
@@ -196,7 +199,8 @@ function Experience() {
             fontSize: { xs: '1.125rem', md: '1.3rem' },
             fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             color: '#666',
-            mb: 3
+            maxWidth: 'none',
+            mb: 1.5
           }}>
             What's Next? Right now I am super interested in backend engineering, distributed computing, and networking. My last internship at Duolingo gave me an opportunity to focus on backend architecture and database design. 
           </Typography>
@@ -206,7 +210,11 @@ function Experience() {
             value={activeTab} 
             onChange={handleTabChange}
             sx={{
+              minHeight: 44,
               '& .MuiTab-root': {
+                minWidth: 0,
+                minHeight: 44,
+                px: { xs: 1.5, sm: 2 },
                 fontFamily: '"Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 fontWeight: 500,
                 fontSize: '1.125rem',
@@ -241,18 +249,17 @@ function Experience() {
       {/* Experience Feed */}
       <section aria-label="Experience">
         <Box sx={{ 
-          mx: 'auto', 
-          px: { xs: 1, md: 2 },
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1fr)',
-          gap: '24px',
+          gap: { xs: 1.5, md: 2 },
           alignItems: 'start'
         }}>
           {experiencesToShow.map((experience, index) => {
+            const experienceKey = `${experience.category}-${experience.id}`;
             const hasVisual = experience.hasPoster || experience.hasImage;
             return (
             <article 
-              key={`${experience.category}-${experience.id}`}
+              key={experienceKey}
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
                 minWidth: 0
@@ -291,14 +298,16 @@ function Experience() {
                   transform: 'translateY(-2px)'
                 }
               }}>
-            <CardContent sx={{ p: 0, height: '100%', position: 'relative', zIndex: 1 }} className="card-content">
+            <CardContent sx={{ p: 0, '&:last-child': { pb: 0 }, position: 'relative', zIndex: 1 }} className="card-content">
               {/* Header */}
-              <Box sx={{ p: { xs: 2, md: 3 }, pb: 2 }}>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'flex-start' }, mb: 2, gap: { xs: 1, sm: 0 } }}>
-                  <Box sx={{ flex: 1, width: '100%' }}>
-                    <Typography variant="h6" component="h2" gutterBottom sx={{ 
+              <Box sx={{ px: { xs: 2, md: 2.5 }, py: { xs: 1.5, md: 2 } }}>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'flex-start', gap: { xs: 1, sm: 2 } }}>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography variant="h6" component="h2" sx={{
                       fontWeight: 600,
                       fontSize: { xs: '1.4rem', md: '1.75rem' },
+                      lineHeight: 1.25,
+                      mb: 0.5,
                       color: '#5b8165',
                       textAlign: 'left'
                     }}>
@@ -307,19 +316,32 @@ function Experience() {
                     <Typography variant="subtitle1" sx={{ 
                       color: '#8fbfa3', 
                       fontWeight: 500,
-                      mb: 1,
+                      mb: 0.75,
                       fontSize: { xs: '1.125rem', md: '1.3rem' },
+                      lineHeight: 1.35,
                       textAlign: 'left'
                     }}>
                       {experience.title}
                     </Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, md: 2 }, mb: 1, flexWrap: 'wrap' }}>
-                      <CalendarToday sx={{ fontSize: { xs: 18, md: 20 }, color: '#8fbfa3' }} />
-                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
+                    <Box sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      columnGap: 1.5,
+                      rowGap: 0.5,
+                      color: '#666',
+                      '& > span': {
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 0.5,
+                        fontSize: { xs: '1rem', md: '1.125rem' }
+                      }
+                    }}>
+                      <Typography component="span" variant="body2">
+                        <CalendarToday sx={{ fontSize: 16, color: '#8fbfa3' }} />
                         {experience.date}
                       </Typography>
-                      <LocationOn sx={{ fontSize: { xs: 18, md: 20 }, color: '#5b8165' }} />
-                      <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
+                      <Typography component="span" variant="body2">
+                        <LocationOn sx={{ fontSize: 16, color: '#5b8165' }} />
                         {experience.location}
                       </Typography>
                     </Box>
@@ -367,9 +389,7 @@ function Experience() {
                             height: '300px'
                           }
                         },
-                        display: 'inline-block',
-                        whiteSpace: 'nowrap',
-                        mt: { xs: 1, sm: 0 }
+                        display: 'inline-block'
                       }}>
                         {experience.linkText || 'Learn More →'}
                       </Box>
@@ -378,27 +398,27 @@ function Experience() {
                 </Box>
               </Box>
 
-              <Divider sx={{ mx: 3, opacity: 0.3 }} />
+              <Divider sx={{ mx: { xs: 2, md: 2.5 }, opacity: 0.3 }} />
 
               {/* Content Area - Description and Poster */}
               <Box sx={{ 
-                p: { xs: 2, md: 3 }, 
-                pt: 2,
+                px: { xs: 2, md: 2.5 },
+                py: { xs: 1.5, md: 2 },
                 display: 'grid',
                 gridTemplateColumns: {
                   xs: 'minmax(0, 1fr)',
-                  md: hasVisual ? 'minmax(0, 3fr) minmax(0, 2fr)' : 'minmax(0, 1fr)'
+                  md: hasVisual ? 'minmax(0, 1fr) fit-content(17rem)' : 'minmax(0, 1fr)'
                 },
                 alignItems: 'start',
                 textAlign: 'left',
-                gap: { xs: 2, md: 4 }
+                gap: { xs: 1.5, md: 2.5 }
               }}>
                 {/* Description Column */}
-                <Box sx={{ width: '100%', minWidth: 0, gridColumn: hasVisual ? 'auto' : '1 / -1' }}>
-                  <Typography variant="body2" sx={{ mb: 1.5, color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
+                <Box sx={{ minWidth: 0 }}>
+                  <Typography variant="body2" sx={{ mb: 0.75, color: '#666', fontSize: { xs: '1rem', md: '1.125rem' } }}>
                     Tools & Technologies
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 1.5 }, mb: { xs: 2, md: 3 } }}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mb: 1.25 }}>
                     {experience.tools.map((tool, i) => (
                       <Chip 
                         key={i} 
@@ -409,7 +429,7 @@ function Experience() {
                           borderColor: '#8fbfa3', 
                           color: '#5b8165',
                           fontSize: { xs: '0.875rem', md: '1rem' },
-                          height: { xs: 32, md: 36 },
+                          height: 28,
                           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                           animation: `chipFadeIn 0.5s ease-out ${i * 0.05 + 0.3}s both`,
                           '&:hover': {
@@ -425,8 +445,7 @@ function Experience() {
                   <Typography variant="body1" sx={{ 
                     color: '#333', 
                     maxWidth: 'none',
-                    width: '100%',
-                    lineHeight: 1.6,
+                    lineHeight: 1.55,
                     fontSize: { xs: '1.125rem', md: '1.25rem' }
                   }}>
                     {experience.description}
@@ -435,117 +454,64 @@ function Experience() {
 
                 {/* Image/Poster Column */}
                 {hasVisual && (
-                  <Box sx={{ 
-                    p: { xs: 1.5, md: 2 }, 
-                    backgroundColor: '#f8f9ff', 
-                    borderRadius: '16px',
-                    border: '1px solid #e8eaff',
-                    height: 'fit-content',
-                    mt: 'auto'
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifySelf: { xs: 'center', md: 'end' },
+                    minWidth: 0,
+                    maxWidth: '100%',
+                    boxSizing: 'border-box',
+                    gap: 1,
+                    p: 0.75,
+                    backgroundColor: '#f8f9ff',
+                    borderRadius: '12px',
+                    border: '1px solid #e8eaff'
                   }}>
-                    <Box sx={{ width: '100%', height: { xs: '250px', sm: '300px', md: '400px' }, borderRadius: '12px', overflow: 'hidden', border: '1px solid #e0e0e0' }}>
-                      <Box sx={{ 
-                        height: '100%', 
-                        display: 'flex', 
-                        flexDirection: 'column',
-                        backgroundColor: '#f8f9fa'
-                      }}>
-                        {/* PDF Preview */}
-                        <Box sx={{ 
-                          flex: 1, 
-                          position: 'relative',
-                          borderRadius: '12px',
-                          overflow: 'hidden',
-                          border: '1px solid #e0e0e0'
-                        }}>
-                          {imageErrors[`${experience.category}-${experience.id}`] ? (
-                            <Box sx={{
-                              width: '100%',
-                              height: '100%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              backgroundColor: '#f8f9fa',
-                              color: '#666'
-                            }}>
-                              <Typography variant="body2">
-                                Image preview not available
-                              </Typography>
-                            </Box>
-                          ) : (
-                            <Box
-                              component="img"
-                              src={
-                                experience.imageUrl || (experience.company === "Duolingo"
-                                  ? "/duolingo.png"
-                                  : experience.hasImage && experience.company.includes("Data to Discovery")
-                                  ? "/image.png"
-                                  : experience.company.includes("California Institute of Technology")
-                                  ? fsriPoster
-                                  : experience.company.includes("NASA")
-                                  ? seesPoster
-                                  : fsriPoster)
-                              }
-                              alt={experience.hasImage ? `${experience.company} experience` : `Research Poster - ${experience.company}`}
-                              onError={(e) => {
-                                console.error('Image failed to load:', e.target.src, 'for experience:', `${experience.category}-${experience.id}`);
-                                setImageErrors(prev => ({ ...prev, [`${experience.category}-${experience.id}`]: true }));
-                              }}
-                              onLoad={() => {
-                                console.log('Image loaded successfully for experience:', `${experience.category}-${experience.id}`);
-                              }}
-                              sx={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'contain',
-                                borderRadius: '12px',
-                                backgroundColor: experience.hasImage && experience.company.includes("Data to Discovery") ? '#000' : 'transparent'
-                              }}
-                            />
-                          )}
-                        </Box>
-                        
-                        {/* Action Buttons */}
-                        <Box sx={{ 
-                          p: { xs: 1.5, md: 2 }, 
-                          backgroundColor: 'white',
-                          borderTop: '1px solid #e0e0e0',
-                          display: 'flex', 
-                          gap: { xs: 1, md: 2 }, 
-                          justifyContent: 'center',
-                          flexWrap: 'wrap'
-                        }}>
-                          {experience.link && experience.hasImage ? (
-                            <Button
-                              variant="contained"
-                              startIcon={<OpenInNew sx={{ fontSize: { xs: 16, md: 20 } }} />}
-                              href={experience.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              sx={{ 
-                                backgroundColor: '#8fbfa3',
-                                '&:hover': { backgroundColor: '#a5b780' },
-                                fontSize: { xs: '0.95rem', md: '1.05rem' },
-                                px: { xs: 1.5, md: 2 },
-                                py: { xs: 0.75, md: 1 }
-                              }}
-                            >
-                              {experience.bottomButtonText || experience.linkText || 'Learn More'}
-                            </Button>
-                          ) : experience.pdfLink ? (
-                            <Button
-                              variant="outlined"
-                              startIcon={<Download />}
-                              href={experience.pdfLink}
-                              download
-                              sx={{ borderColor: '#8fbfa3', color: '#8fbfa3', fontSize: { xs: '0.95rem', md: '1.05rem' } }}
-                            >
-                              View PDF
-                            </Button>
-                          ) : null}
-                        </Box>
-                      </Box>
-                    </Box>
+                    {imageErrors[experienceKey] ? (
+                      <Typography variant="body2" sx={{ p: 0.75, color: '#666' }}>
+                        Image preview not available
+                      </Typography>
+                    ) : (
+                      <Box
+                        component="img"
+                        src={
+                          experience.imageUrl || (experience.company === "Duolingo"
+                            ? "/duolingo.png"
+                            : experience.hasImage && experience.company.includes("Data to Discovery")
+                            ? "/image.png"
+                            : experience.company.includes("California Institute of Technology")
+                            ? fsriPoster
+                            : experience.company.includes("NASA")
+                            ? seesPoster
+                            : fsriPoster)
+                        }
+                        alt={experience.hasImage ? `${experience.company} experience` : `Research Poster - ${experience.company}`}
+                        onError={(e) => {
+                          console.error('Image failed to load:', e.target.src, 'for experience:', experienceKey);
+                          setImageErrors(prev => ({ ...prev, [experienceKey]: true }));
+                        }}
+                        sx={{
+                          display: 'block',
+                          maxWidth: '100%',
+                          maxHeight: { xs: 200, md: 216 },
+                          objectFit: 'contain',
+                          borderRadius: '8px'
+                        }}
+                      />
+                    )}
+                    {experience.pdfLink && (
+                      <Button
+                        variant="outlined"
+                        size="small"
+                        startIcon={<Download />}
+                        href={experience.pdfLink}
+                        download
+                        sx={{ borderColor: '#8fbfa3', color: '#5b8165' }}
+                      >
+                        View PDF
+                      </Button>
+                    )}
                   </Box>
                 )}
               </Box>
